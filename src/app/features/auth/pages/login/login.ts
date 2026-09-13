@@ -14,7 +14,7 @@ import { LoginApi } from '../../services/login';
 })
 
 export class Login {
-  constructor(private _LoginApi: LoginApi , private _Router:Router) {
+  constructor(private _LoginApi: LoginApi, private _Router: Router) {
 
   }
   apiError: string = "";
@@ -36,13 +36,14 @@ export class Login {
     this._LoginApi.loginData(this.loginModel().email, this.loginModel().password).subscribe({
       next: (res) => {
         console.log(res);
-        this._Router.navigate(['/projects'])
         localStorage.setItem("access_token", res.access_token);
-       
+        if (localStorage.getItem(res.access_token)) {
+          this._Router.navigate(['/projects'])
+        }
         localStorage.setItem("refresh_token", res.refresh_token);
 
 
-        
+
 
 
       },

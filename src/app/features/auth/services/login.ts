@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Service } from '@angular/core';
+import { LoginResponse } from '../models/login';
 
 @Service()
 export class LoginApi {
@@ -9,7 +10,7 @@ export class LoginApi {
  
     loginData(email: string, password: string) {
     
-        return this.http.post(this.apiUrl + "/auth/v1/token?grant_type=password", {
+        return this.http.post<LoginResponse>(this.apiUrl + "/auth/v1/token?grant_type=password", {
             email,
             password,
             

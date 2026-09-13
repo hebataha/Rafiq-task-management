@@ -37,6 +37,11 @@ export class Login {
       next: (res) => {
         console.log(res);
         this._Router.navigate(['/projects'])
+        localStorage.setItem("access_token", res.access_token);
+       
+        localStorage.setItem("refresh_token", res.refresh_token);
+
+
         
 
 

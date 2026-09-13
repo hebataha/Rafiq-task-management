@@ -1,4 +1,4 @@
-<div class="min-h-screen bg-[#f7f7ff] flex items-center justify-center px-4">
+<div class="min-h-screen bg-[#f7f7ff] flex items-center justify-center px-4" >
 
   <div class="w-full max-w-[480px] rounded-[10px] bg-white
            px-[48px] py-[50px] shadow-[0_10px_35px_rgba(0,0,0,0.05)]">
@@ -14,7 +14,7 @@
     </div>
 
     <!-- Form -->
-    <form class="mt-[40px]">
+    <form class="mt-[40px]" >
       <!-- Email -->
       <div>
         <label for="email" class="mb-2 block text-[12px] font-semibold uppercase
@@ -86,14 +86,21 @@
         </a>
       </div>
 
+<!-- [disabled]="loginForm.email().errors() || loginForm.password().errors()" -->
+
       <!-- Login Button -->
       <button  class="mt-[32px] h-[48px] w-full rounded-[8px]
                bg-[#0758c9] text-[16px] font-semibold text-white
                transition hover:bg-[#064dac]
-               active:scale-[0.99]" (click)="login()"> 
+               active:scale-[0.99]" (click)="login()" type="button"  > 
         Log In
       </button>
+      @if(apiError){
+     <div class="mt-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+    {{ apiError }}</div>     
+      }
 
+      
       <!-- Divider -->
       <div class="my-[32px] h-px w-full bg-[#eeeeee]"></div>
 

@@ -37,7 +37,7 @@ export class Login {
       next: (res) => {
         console.log(res);
         localStorage.setItem("access_token", res.access_token);
-        if (localStorage.getItem(res.access_token)) {
+        if (localStorage.getItem("access_token")) {
           this._Router.navigate(['/projects'])
         }
         localStorage.setItem("refresh_token", res.refresh_token);
@@ -52,6 +52,17 @@ export class Login {
         this.apiError = err.error.msg;
       }
     });
+      // this.testRefresh()
   }
+  testRefresh() {
+  this._LoginApi.refreshToken().subscribe({
+    next: (res) => {
+      console.log('refresh success', res);
+    },
+    error: (err) => {
+      console.log('refresh error', err);
+    }
+  });
+}
 
 }

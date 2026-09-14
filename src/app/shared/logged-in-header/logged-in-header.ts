@@ -3,8 +3,8 @@ import { RouterOutlet } from '../../../../node_modules/.pnpm/@angular+router@22.
 
 @Component({
   imports: [RouterOutlet],
-  selector: 'app-auth-header',
-  styleUrl: './auth-header.css',
-  templateUrl: './auth-header.html',
+  selector: 'app-logged-in-header',
+  styleUrl: './logged-in-header.css',
+  templateUrl: './logged-in-header.html',
 })
-export class AuthHeader {}
+export class LoggedInHeader {}

@@ -41,10 +41,7 @@ export class Login {
           this._Router.navigate(['/projects'])
         }
         localStorage.setItem("refresh_token", res.refresh_token);
-
-
-
-
+        
 
       },
       error: (err) => {

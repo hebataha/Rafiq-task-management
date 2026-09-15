@@ -7,8 +7,12 @@ import { Component } from '@angular/core';
   templateUrl: './side-bar.html',
 })
 export class SideBar {
-  isExpanded= false;
+  isExpanded = false;
+  textCollapse = false;
    toggle(): void {
     this.isExpanded = !this.isExpanded;
+   }
+  sidebarCollapse() {
+    this.textCollapse = !this.textCollapse;
   }
 }

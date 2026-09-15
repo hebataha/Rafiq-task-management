@@ -28,35 +28,41 @@
         </ul>
         <div class="nav-list_dropdown">
             <ul class="nav-list_dropdown__item ">
-                <li class="bg-surface-highest">
-                    <a class="nav-list_dropdown__item--child flex gap-2 p-2 items-center justify-between">
+                <li class="bg-surface-highest cursor-pointer">
+                    <a class="nav-list_dropdown__item--child flex gap-2 p-2 items-center justify-between"
+                        (click)="toggle()">
                         <div class="text">
-                        <span>Active Project Nation</span>
+                            <span>Active Project Nation</span>
 
                         </div>
-                        <div class="shrink">
-                            <img src="assets/images/icons/top-arrow.svg"/>
+                        <div class="arrow">
+                            <img
+                                [src]="isExpanded ?'assets/images/icons/top-arrow.svg' :'assets/images/icons/down-arrow.svg'" />
+
                         </div>
                     </a>
+                    @if(isExpanded){
                     <div class="nav-list_dropdown__item--submenu flex flex-col gap-3 bg-white">
                         <div class="topic flex gap-2 p-2 items-center">
-                            <img src="assets/images/icons/epic.svg"/>
+                            <img src="assets/images/icons/epic.svg" />
                             <span>Epics</span>
                         </div>
-                       <div class="topic flex gap-2 p-2 items-center">
-                            <img src="assets/images/icons/tasks.svg"/>
+                        <div class="topic flex gap-2 p-2 items-center">
+                            <img src="assets/images/icons/tasks.svg" />
                             <span>tasks</span>
                         </div>
-                          <div class="topic flex gap-2 p-2 items-center">
-                            <img src="assets/images/icons/members.svg"/>
+                        <div class="topic flex gap-2 p-2 items-center">
+                            <img src="assets/images/icons/members.svg" />
                             <span>Members</span>
                         </div>
-                          <div class="topic flex gap-2 p-2 items-center">
-                            <img src="assets/images/icons/details.svg"/>
+                        <div class="topic flex gap-2 p-2 items-center">
+                            <img src="assets/images/icons/details.svg" />
                             <span>Details</span>
                         </div>
 
                     </div>
+                    }
+
 
                 </li>
                 <li>

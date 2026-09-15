@@ -6,4 +6,9 @@ import { Component } from '@angular/core';
   styleUrl: './side-bar.scss',
   templateUrl: './side-bar.html',
 })
-export class SideBar {}
+export class SideBar {
+  isExpanded= false;
+   toggle(): void {
+    this.isExpanded = !this.isExpanded;
+  }
+}

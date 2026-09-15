@@ -76,6 +76,11 @@ aside {
                         /* Optional Future-proofing */
                         line-clamp: 1;
                         width: 120px;
+
+                    }
+
+                    .arrow {
+                        transform: rotate(180deg);
                     }
                 }
 
@@ -90,6 +95,12 @@ aside {
                         font-weight: 500;
                         color: var(--color-slate-100);
                         text-transform: capitalize;
+                        transition: all .3s ease-in-out;
+                        border-radius: 4px;
+                        &:hover{
+                            background-color: var(--color-surface-highest);
+                            transform: translateY(-3px);
+                        }
 
                         img {
                             width: 20px;

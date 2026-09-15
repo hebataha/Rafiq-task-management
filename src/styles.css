@@ -46,6 +46,9 @@ body {
   line-height: 56px;
   text-transform: capitalize;
   color: var(--color-primary);
+  --color-surface-highest: #d7e2ff;
+  --color-surface-medium: #737685;
+  --color-surface-low: #f1f3ff;
 }
 
 .heading-lg {

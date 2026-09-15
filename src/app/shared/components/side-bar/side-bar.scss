@@ -1,9 +1,8 @@
 aside {
     height: 100%;
-    padding: 16px;
+    padding: 1rem;
 
     .navigation-list {
-        padding: 1rem;
 
         &__logo {
             height: 28px;
@@ -48,6 +47,58 @@ aside {
                 }
             }
         }
+
+        .nav-list_dropdown {
+            &__item {
+                padding: 12px;
+
+                &--child {
+                    font-size: 14px;
+                    font-weight: 600;
+                    color: var(--color-slate-100);
+                    padding: 12px;
+                    border-radius: 6px;
+                    text-transform: capitalize;
+
+                    .text {
+                        display: -webkit-box;
+                        /* 1. Required for the WebKit box layout engine */
+                        -webkit-box-orient: vertical;
+                        display: -webkit-box;
+                        /* 1. Required for the WebKit box layout engine */
+                        -webkit-box-orient: vertical;
+                        /* 2. Forces children to stack vertically */
+                        -webkit-line-clamp: 1;
+                        /* 3. Number of lines you want to display */
+                        overflow: hidden;
+                        /* 4. Hides the remaining text */
+
+                        /* Optional Future-proofing */
+                        line-clamp: 1;
+                        width: 120px;
+                    }
+                }
+
+                &--submenu {
+                    padding: 18px;
+                    font-size: 14px;
+                    font-weight: 500;
+                    color: var(--color-slate-100);
+
+                    .topic {
+                        font-size: 14px;
+                        font-weight: 500;
+                        color: var(--color-slate-100);
+                        text-transform: capitalize;
+
+                        img {
+                            width: 20px;
+                            height: 15.07px
+                        }
+                    }
+                }
+            }
+        }
     }
 
     .navigation-actions {
@@ -63,13 +114,14 @@ aside {
                     text-transform: capitalize;
                 }
 
-           
+
 
 
             }
-                 .logout {
-                    color: #BA1A1A
-                }
+
+            .logout {
+                color: #BA1A1A
+            }
 
 
 

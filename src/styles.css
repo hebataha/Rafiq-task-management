@@ -27,13 +27,18 @@ body {
   --color-error-input: #93000a;
   --color-error-bg: #ffdad6;
   --padding: 10px 24px;
+
+}
+:root {
+  --btn-padding: 10px 24px;
   --radius-2: 2px;
   --radius-4: 4px;
   --btn-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --transition-3: all 0.3s ease-in-out;
-
+    --color-slate-100: #041b3c;
+  --color-slate-200: #4f5f7b;
+  --color-slate-300: #c3c6d6;
 }
-
 .display-lg {
   font-size: 3.5rem;
   font-weight: 700;

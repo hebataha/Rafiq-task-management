@@ -15,6 +15,7 @@ export class SideBar {
   }
   isExpanded = false;
   textCollapse = false;
+  errMsg = "";
    toggle(): void {
     this.isExpanded = !this.isExpanded;
    }
@@ -29,8 +30,8 @@ export class SideBar {
         this._Router.navigate(['/login'])
         
       },
-      error: () => {
-        
+      error: (err) => {
+        console.log("we have an error",err.error)
       }
   })
 }

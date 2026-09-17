@@ -6,6 +6,7 @@ import { AppLayout } from './shared/layouts/app-layout/app-layout';
 import { Login } from './features/auth/pages/login/login';
 import { SignUp } from './features/auth/pages/sign-up/sign-up';
 import { Projects } from './features/projects/projects';
+import { authGuard } from './core/core/guards/auth-guard';
 
 export const routes: Routes = [
   {
@@ -21,7 +22,7 @@ export const routes: Routes = [
     path: '',
     component: AppLayout,
     children: [
-      { path: 'projects', component: Projects }
+      { path: 'projects', component: Projects, canActivate: [authGuard] }
     ]
   },
 

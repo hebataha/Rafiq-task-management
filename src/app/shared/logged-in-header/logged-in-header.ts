@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthUserService } from '../layouts/auth-user-service';
 import { AuthUser } from '../layouts/auth-user';
+import { Router } from '@angular/router';
 
 @Component({
   imports: [],
@@ -10,11 +11,11 @@ import { AuthUser } from '../layouts/auth-user';
 })
 export class LoggedInHeader {
   userData: AuthUser | null = null;
-  constructor(private _AuthUserService: AuthUserService) {
+  constructor(private _AuthUserService: AuthUserService,private _Router:Router) {
     this.getData()
-
-
   }
+
+
   getData() {
 
     this._AuthUserService.getUserData().subscribe({

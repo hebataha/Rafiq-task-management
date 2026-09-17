@@ -5,6 +5,7 @@ import { Router, RouterLink } from '@angular/router';
 import { LoginModule } from '../../models/login';
 import { JsonPipe } from '@angular/common';
 import { LoginApi } from '../../services/login';
+import { AuthState } from '../../../../core/interceptors/services/auth-state';
 
 @Component({
   imports: [FormField, RouterLink, JsonPipe],
@@ -14,7 +15,7 @@ import { LoginApi } from '../../services/login';
 })
 
 export class Login {
-  constructor(private _LoginApi: LoginApi, private _Router: Router) {
+  constructor(private _LoginApi: LoginApi, private _Router: Router , private _AuthState : AuthState) {
 
   }
   apiError: string = "";
@@ -33,9 +34,11 @@ export class Login {
   login() {
     console.log(this.loginModel().email);
     console.log(this.loginModel().password);
+
     this._LoginApi.loginData(this.loginModel().email, this.loginModel().password).subscribe({
       next: (res) => {
         console.log(res);
+         this._AuthState.password = this.loginModel().password;
         localStorage.setItem("access_token", res.access_token);
         if (localStorage.getItem("access_token")) {
           this._Router.navigate(['/projects'])

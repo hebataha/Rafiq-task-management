@@ -17,6 +17,7 @@ export class SideBar {
   isExpanded = false;
   textCollapse = false;
   errMsg = "";
+  loadingState: boolean = false;
   toggle(): void {
     this.isExpanded = !this.isExpanded;
   }
@@ -24,6 +25,7 @@ export class SideBar {
     this.textCollapse = !this.textCollapse;
   }
   logout() {
+    this.loadingState = true;
     this._AuthUserService.logout().subscribe({
       next: () => {
         localStorage.removeItem("access_token"),
@@ -37,10 +39,11 @@ export class SideBar {
       },
       error: (err) => {
         console.log("we have an error", err.error),
-          this._ToastService.show(
-            '404 error',
-            "error"
-          )
+          this.loadingState = false;
+        this._ToastService.show(
+          '404 error',
+          "error"
+        )
       }
     })
   }

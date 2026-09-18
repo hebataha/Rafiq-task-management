@@ -5,6 +5,7 @@
 
 .nav-wrapper {
   height: 100%;
+  flex-shrink: 0;
 }
 
 .main-wrapper {

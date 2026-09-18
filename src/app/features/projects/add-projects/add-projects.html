@@ -106,8 +106,8 @@
                     Back
                 </button>
 
-                <button (click)="create()" type="button" [class.disabled]="projectForm().invalid()" 
-                    class="cursor-pointer h-[37px] rounded-[3px] bg-[#0667D8] px-6 text-[11px] font-semibold text-white shadow-[0_2px_4px_rgba(0,82,204,0.25)] transition hover:bg-[#055DBF]">
+                <button (click)="create()" type="button" [disabled]="projectForm().invalid()" 
+                    class="cursor-pointer h-[37px] rounded-[3px] bg-[#0667D8] px-6 text-[11px] font-semibold text-white shadow-[0_2px_4px_rgba(0,82,204,0.25)] transition hover:bg-[#055DBF] disabled:cursor-not-allowed">
                     Create Project
                 </button>
 

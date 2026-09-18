@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { AuthUserService } from '../../layouts/auth-user-service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AuthState } from '../../../core/interceptors/services/auth-state';
 import { ToastService } from '../../../core/services/toast';
 
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-side-bar',
   styleUrl: './side-bar.scss',
   templateUrl: './side-bar.html',

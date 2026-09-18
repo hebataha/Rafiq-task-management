@@ -11,8 +11,7 @@
     <h1 class="mb-7 text-[26px] font-bold leading-none text-[#182230]">
         Add New Project
     </h1>
-    <h1>{{projectForm.title().value()| json}}
-    </h1>
+    
     <!-- Card -->
     <div
         class="mx-auto w-full max-w-[760px] overflow-hidden rounded-[4px] border border-[#EEF0F4] bg-white shadow-[0_2px_8px_rgba(15,23,42,0.03)]">
@@ -107,7 +106,7 @@
                     Back
                 </button>
 
-                <button type="submit" [class.disabled]="projectForm().invalid()"
+                <button (click)="create()" type="button" [class.disabled]="projectForm().invalid()" 
                     class="cursor-pointer h-[37px] rounded-[3px] bg-[#0667D8] px-6 text-[11px] font-semibold text-white shadow-[0_2px_4px_rgba(0,82,204,0.25)] transition hover:bg-[#055DBF]">
                     Create Project
                 </button>

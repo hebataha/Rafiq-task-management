@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Service } from '@angular/core';
-import { AddProjectsModules } from './modules/add-projects';
+import { AddProjectsModules } from '../modules/add-projects';
 
 @Service()
 export class AddProjectService {

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Service } from '@angular/core';
 import { AuthUser } from './auth-user';
-import { AuthState } from '../../core/interceptors/services/auth-state';
+import { AuthState } from '../../features/auth/services/auth-state';
 
 @Service()
 export class AuthUserService {

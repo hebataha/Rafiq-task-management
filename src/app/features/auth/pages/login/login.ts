@@ -5,8 +5,8 @@ import { Router, RouterLink } from '@angular/router';
 import { LoginModule } from '../../models/login';
 import { JsonPipe } from '@angular/common';
 import { LoginApi } from '../../services/login';
-import { AuthState } from '../../../../core/interceptors/services/auth-state';
-import { ToastService } from '../../../../core/services/toast';
+import { AuthState } from '../../services/auth-state';
+import { ToastService } from '../../../../shared/services/toast';
 
 @Component({
   imports: [FormField, RouterLink, JsonPipe],

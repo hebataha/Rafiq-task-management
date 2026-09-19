@@ -6,7 +6,7 @@ import { AppLayout } from './shared/layouts/app-layout/app-layout';
 import { Login } from './features/auth/pages/login/login';
 import { SignUp } from './features/auth/pages/sign-up/sign-up';
 import { Projects } from './features/projects/projects';
-import { authGuard } from './core/core/guards/auth-guard';
+import { authGuard } from './core/guards/auth-guard';
 import { AddProjects } from './features/projects/add-projects/add-projects';
 
 export const routes: Routes = [

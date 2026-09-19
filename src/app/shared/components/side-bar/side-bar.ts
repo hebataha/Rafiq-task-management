@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { AuthUserService } from '../../layouts/auth-user-service';
 import { Router, RouterLink } from '@angular/router';
-import { AuthState } from '../../../core/interceptors/services/auth-state';
-import { ToastService } from '../../../core/services/toast';
+import { AuthState } from '../../../features/auth/services/auth-state';
+import { ToastService } from '../../services/toast';
 
 @Component({
   imports: [RouterLink],

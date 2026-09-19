@@ -3,7 +3,7 @@ import { AddProjectsModules } from './modules/add-projects';
 import { form, FormField, maxLength, minLength, required } from '@angular/forms/signals';
 import { JsonPipe } from '@angular/common';
 import { AddProjectService } from './add-project-service';
-import { ToastService } from '../../../core/services/toast';
+import { ToastService } from '../../../shared/services/toast';
 
 @Component({
   imports: [JsonPipe, FormField],
@@ -39,8 +39,8 @@ export class AddProjects {
         this.addProject.set(
           {
 
-            title:'',
-            description:'',
+            title: '',
+            description: '',
           }
         )
 

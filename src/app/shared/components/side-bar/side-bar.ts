@@ -24,12 +24,13 @@ export class SideBar {
     this.textCollapse = !this.textCollapse;
   }
   logout() {
-    this.loadingState = true;
     this._AuthUserService.logout().subscribe({
       next: () => {
         localStorage.removeItem("access_token"),
           localStorage.removeItem("refresh_token"),
-          this._Router.navigate(['/login'])
+          this._Router.navigate(['/login']),
+              this.loadingState = false;
+
         this._ToastService.show(
           'logined out succefully',
           "success"

@@ -8,14 +8,16 @@ import { SignUp } from './features/auth/pages/sign-up/sign-up';
 import { Projects } from './features/projects/projects';
 import { authGuard } from './core/guards/auth-guard';
 import { AddProjects } from './features/projects/add-projects/add-projects';
+import { guestGuard } from './core/guards/guest-guard';
 
 export const routes: Routes = [
   {
     path: '',
     component: AuthLayout,
     children: [
-      { path: 'login', component: Login },
-      { path: 'sign-up', component: SignUp }
+      { path: 'login', component: Login ,    canActivate:[guestGuard]
+},
+      { path: 'sign-up', component: SignUp , canActivate:[guestGuard] }
     ]
   },
 
@@ -35,11 +37,7 @@ export const routes: Routes = [
   {
     path: '',
     redirectTo: 'login',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
 
-  {
-    path: '**',
-    redirectTo: 'login'
-  }
 ];

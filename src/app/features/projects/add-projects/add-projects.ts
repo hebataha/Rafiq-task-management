@@ -1,8 +1,9 @@
 import { Component, inject, signal } from '@angular/core';
 import { AddProjectsModules } from '../modules/add-projects';
 import { form, FormField, maxLength, minLength, required } from '@angular/forms/signals';
-import { AddProjectService } from './add-project-service';
 import { ToastService } from '../../../shared/services/toast';
+import { AddProjectService } from '../services/add-project-service';
+import { Router } from '@angular/router';
 
 @Component({
   imports: [FormField],
@@ -14,6 +15,7 @@ import { ToastService } from '../../../shared/services/toast';
 export class AddProjects {
   _AddProjectService = inject(AddProjectService);
   _ToastService = inject(ToastService)
+  _router= inject(Router)
   loading: boolean = false;
   addProject = signal<AddProjectsModules>({
     title: '',
@@ -42,11 +44,11 @@ export class AddProjects {
           }
         )
 
-
         this._ToastService.show(
           'project created succefully',
           "success"
         )
+        this._router.navigate(['/projects'])
 
       },
       error: (err) => {

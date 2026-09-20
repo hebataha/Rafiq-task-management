@@ -16,15 +16,6 @@ export class ProjectService {
 
 
 getProjects() {
-  const access_token = localStorage.getItem('access_token');
-
-  return this.http.get(
-    this.apiUrl + '/rest/v1/rpc/get_projects',
-    {
-      headers: {
-        apikey: this.apiKey,
-      }
-    }
-  );
+  return this.http.get(this.apiUrl + '/rest/v1/projects');
 }
 }

@@ -1,12 +1,11 @@
 import { Component, inject, signal } from '@angular/core';
 import { AddProjectsModules } from '../modules/add-projects';
 import { form, FormField, maxLength, minLength, required } from '@angular/forms/signals';
-import { JsonPipe } from '@angular/common';
 import { AddProjectService } from './add-project-service';
 import { ToastService } from '../../../shared/services/toast';
 
 @Component({
-  imports: [JsonPipe, FormField],
+  imports: [FormField],
   selector: 'app-add-projects',
   styleUrl: './add-projects.css',
   templateUrl: './add-projects.html',
@@ -29,11 +28,10 @@ export class AddProjects {
 
     maxLength(fields.description, 500)
   });
-  name = this.projectForm.title().value();
-  description = this.projectForm.description().value();
   create() {
-    console.log("created")
-    this._AddProjectService.addProject(this.name, this.description).subscribe({
+    const title = this.projectForm.title().value();
+    const description = this.projectForm.description().value();
+    this._AddProjectService.addProject(title, description).subscribe({
       next: (res) => {
         console.log("add project ", res);
         this.addProject.set(

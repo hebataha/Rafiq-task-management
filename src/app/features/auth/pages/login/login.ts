@@ -1,15 +1,14 @@
 import { Component } from '@angular/core';
 import { signal } from '@angular/core';
-import { email, form, FormField, minLength, required } from '@angular/forms/signals';
+import { email, form, FormField, required } from '@angular/forms/signals';
 import { Router, RouterLink } from '@angular/router';
 import { LoginModule } from '../../models/login';
-import { JsonPipe } from '@angular/common';
 import { LoginApi } from '../../services/login';
 import { AuthState } from '../../services/auth-state';
 import { ToastService } from '../../../../shared/services/toast';
 
 @Component({
-  imports: [FormField, RouterLink, JsonPipe],
+  imports: [FormField, RouterLink],
   selector: 'app-login',
   styleUrl: './login.css',
   templateUrl: './login.html',

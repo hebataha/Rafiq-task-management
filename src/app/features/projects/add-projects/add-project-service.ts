@@ -13,7 +13,7 @@ export class AddProjectService {
         return this.http.post<AddProjectsModules>(
             `${this.apiUrl}/rest/v1/projects`,
             {
-                name,
+                name: title,
                 description
             },
             {

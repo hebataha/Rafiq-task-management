@@ -1,0 +1,214 @@
+aside {
+    height: 100%;
+    padding: 1rem;
+
+    .navigation-list {
+
+        &__logo {
+            height: 28px;
+            margin-bottom: 40px;
+        }
+
+        .nav-list {
+            margin-bottom: 15px;
+
+            li {
+
+                &:hover {
+                    transition: all 0.3ss ease-in-out;
+                    background-color: var(--color-white);
+                    color: var(--color-primary);
+                    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+                    cursor: pointer;
+                    border-radius: 4px;
+
+                    svg {
+                        fill: var(--color-primary);
+                    }
+
+                    .nav-list__item--name {
+                        color: var(--color-primary);
+                    }
+                }
+            }
+
+            &__item {
+
+                svg {
+                    width: 21.5px;
+                    height: 16px;
+                    fill: #041B3C;
+
+                }
+
+                &--name {
+                    font-size: 14px;
+                    font-weight: 500;
+                    color: var(--color-slate-100);
+                    text-transform: capitalize;
+                }
+            }
+        }
+
+        .nav-list_dropdown {
+            border-top: 1px solid rgba(#000, .1);
+            padding-top: 15px;
+
+            &__item {
+                padding: 12px;
+
+                &--child {
+                    font-size: 14px;
+                    font-weight: 600;
+                    color: var(--color-slate-100);
+                    padding: 12px;
+                    border-radius: 6px;
+                    text-transform: capitalize;
+                    transition: all .3s ease-in-out;
+
+                    &:hover {
+                        background-color: #d7e2ff;
+                    }
+
+                    .text {
+                        display: -webkit-box;
+                        /* 1. Required for the WebKit box layout engine */
+                        -webkit-box-orient: vertical;
+                        display: -webkit-box;
+                        /* 1. Required for the WebKit box layout engine */
+                        -webkit-box-orient: vertical;
+                        /* 2. Forces children to stack vertically */
+                        -webkit-line-clamp: 1;
+                        /* 3. Number of lines you want to display */
+                        overflow: hidden;
+                        /* 4. Hides the remaining text */
+
+                        /* Optional Future-proofing */
+                        line-clamp: 1;
+                        max-width: 120px;
+
+                    }
+
+                    .arrow {
+                        transform: rotate(180deg);
+                    }
+                }
+
+                &--submenu {
+                    padding: 18px;
+                    font-size: 14px;
+                    font-weight: 500;
+                    color: var(--color-slate-100);
+
+                    .topic {
+                        font-size: 14px;
+                        font-weight: 500;
+                        color: var(--color-slate-100);
+                        text-transform: capitalize;
+                        transition: all .3s ease-in-out;
+                        border-radius: 4px;
+                        border-radius: 40px;
+                        padding: 10px;
+
+                        &:hover {
+                            background-color: var(--color-surface-low);
+                            transform: translateY(-3px);
+                        }
+
+                        img {
+                            width: 20px;
+                            height: 15.07px
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .navigation-actions {
+        border-top: 1px solid rgba(#C3C6D633, 20);
+        padding-top: 40px;
+
+        &__list {
+            &--item {
+                a {
+                    font-size: 14px;
+                    font-weight: 500;
+                    color: var(--color-slate-100);
+                    text-transform: capitalize;
+                }
+
+                svg {
+                    width: 14px;
+                    height: 20px;
+                }
+
+
+
+            }
+
+            .logout {
+                color: #BA1A1A
+            }
+
+
+
+        }
+    }
+}
+
+.collapsed {
+    svg {
+        transform: rotate(0deg);
+
+    }
+}
+
+.textCollapse {
+    .aside {
+        padding: 15px 0;
+    }
+
+    .nav-list__item--name,
+    .text,
+    .navigation-actions__list--item span,
+    .arrow {
+        opacity: 0;
+        width: 0;
+        height: 0;
+        transition: all .3s ease-in-out;
+        display: none !important;
+
+    }
+
+    .collapsed {
+        svg {
+            transform: rotate(180deg);
+
+        }
+    }
+
+    .nav-list_dropdown__item--submenu {
+        position: absolute;
+        inset-inline-start: 50px;
+        top: 0;
+        background: #D7E2FF;
+        backdrop-filter: blur(20px);
+        border-radius: 8px;
+        min-width: 248px;
+        gap: 0;
+
+    }
+
+    .nav-list_dropdown__item {
+        padding: 0 !important;
+    }
+
+    .nav-list_dropdown__item--child,
+    .nav-list__item,
+    .navigation-actions__list,
+    .navigation-list__logo {
+        justify-content: center;
+        align-items: center;
+    }
+}

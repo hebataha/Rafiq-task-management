@@ -1,9 +1,0 @@
-.loading{
-    width: 100%;
-    min-height: 240px;
-    justify-content: center;
-    align-items: center;
-    svg{
-        fill: var(--color-primary);
-    }
-}

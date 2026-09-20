@@ -7,7 +7,7 @@
         <span class="text-[#2563EB]">Add New Project</span>
     </div>
 
-    <!-- Page title -->
+    <!-- Page name -->
     <h1 class="mb-7 text-[26px] font-bold leading-none text-[#182230]">
         Add New Project
     </h1>
@@ -44,22 +44,22 @@
         <!-- Form content -->
         <form class="px-7 py-7">
 
-            <!-- Project title -->
+            <!-- Project name -->
             <div>
-                <label for="projectTitle"
+                <label for="projectname"
                     class="mb-2 block text-[10px] font-semibold uppercase tracking-[0.04em] text-[#4B5565]">
-                    Project Title
+                    Project name
                     <span class="text-[#D92D20]">*</span>
                 </label>
 
-                <input id="projectTitle" type="text" [formField]="projectForm.title"
+                <input id="projectname" type="text" [formField]="projectForm.name"
                     class="h-[42px] w-full rounded-[3px] border border-[#AFC6F7] bg-[#DCE8FF] px-3 text-[13px] text-[#344054] outline-none transition focus:border-[#4C8BF5] focus:ring-1 focus:ring-[#4C8BF5]" />
 
 
             </div>
 
-            @if( projectForm.title().touched()&& projectForm.title().errors()){
-            @for (error of projectForm.title().errors() ; track error.kind) {
+            @if( projectForm.name().touched()&& projectForm.name().errors()){
+            @for (error of projectForm.name().errors() ; track error.kind) {
             <div class="mt-4 flex gap-2 items-center bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
                 <svg class="h-3 w-3" viewBox="0 0 24 24" fill="none">
                     <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7" />

@@ -1,5 +1,5 @@
 export interface AddProjectsModules {
-    title: string;
+    name: string;
     description: string;
     created_at?: string;
 }

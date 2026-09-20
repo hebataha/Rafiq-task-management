@@ -18,28 +18,28 @@ export class AddProjects {
   _router= inject(Router)
   loading: boolean = false;
   addProject = signal<AddProjectsModules>({
-    title: '',
+    name: '',
     description: '',
   })
 
 
   projectForm = form(this.addProject, (fields) => {
-    required(fields.title, { message: "project title is required" });
-    minLength(fields.title, 3, { message: "Project title must be at least 3 characters" });
-    maxLength(fields.title, 100, { message: "Project title must be max characters 100" });
+    required(fields.name, { message: "project name is required" });
+    minLength(fields.name, 3, { message: "Project name must be at least 3 characters" });
+    maxLength(fields.name, 100, { message: "Project name must be max characters 100" });
 
     maxLength(fields.description, 500)
   });
   create() {
-    const title = this.projectForm.title().value();
+    const name = this.projectForm.name().value();
     const description = this.projectForm.description().value();
-    this._AddProjectService.addProject(title, description).subscribe({
+    this._AddProjectService.addProject(name, description).subscribe({
       next: (res) => {
         console.log("add project ", res);
         this.addProject.set(
           {
 
-            title: '',
+            name: '',
             description: '',
           }
         )

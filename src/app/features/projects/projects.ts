@@ -9,14 +9,14 @@ import { DatePipe } from '@angular/common';
 @Component({
   imports: [RouterLink, DatePipe],
   selector: 'app-projects',
-  styleUrl: './projects.css',
+  styleUrl: './projects.scss',
   templateUrl: './projects.html',
 })
 export class Projects implements OnInit {
   ProjectService = inject(ProjectService);
   http = inject(HttpClient)
   dataResult: AddProjectsModules[] = [];
-  loading: boolean = false;
+  loading: boolean = true;
   ngOnInit() {
     this.getAllProjects();
   }
@@ -25,8 +25,9 @@ export class Projects implements OnInit {
     this.ProjectService.getProjects().subscribe({
       next: (res: any) => {
         console.log("projects added", res);
-        this.loading = false;
         this.dataResult = res;
+        this.loading = false;
+
 
 
       },

@@ -9,6 +9,7 @@ import { Projects } from './features/projects/projects';
 import { authGuard } from './core/guards/auth-guard';
 import { AddProjects } from './features/projects/add-projects/add-projects';
 import { guestGuard } from './core/guards/guest-guard';
+import { ProjectDetails } from './features/projects/project-details/project-details';
 
 export const routes: Routes = [
   {
@@ -29,7 +30,8 @@ export const routes: Routes = [
         path: 'projects', component: Projects, canActivate: [authGuard]
       },
 
-      { path: 'projects/add-project', component: AddProjects, canActivate: [authGuard] }
+      { path: 'projects/add-project', component: AddProjects, canActivate: [authGuard] },
+      { path: 'projects/add-project/:id/epics', component: ProjectDetails, canActivate: [authGuard] },
 
     ]
   },

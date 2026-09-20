@@ -1,0 +1,7 @@
+.card-data{
+    &:hover{
+    border: 1px solid var(--color-primary);
+    transition: all .3s ease-in-out;
+
+    }
+}

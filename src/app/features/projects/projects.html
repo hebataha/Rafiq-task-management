@@ -19,8 +19,7 @@
 
 
   <!-- Projects Grid -->
-@if(loading || dataResult.length === 0 ){
-  
+@if(loading ){
 <div role="status" class="flex align-center loading">
     <svg aria-hidden="true" class="w-8 h-8 text-neutral-tertiary animate-spin fill-brand" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
@@ -39,7 +38,7 @@
     <!-- Project Card -->
     <div class="rounded-[3px] border border-[#eef0f4] bg-white px-4 py-4 shadow-[0_1px_4px_rgba(15,23,42,0.03)]">
       <h2 class="text-[16px] font-semibold text-[#222d3d]">
-        {{item.title}}
+        {{item.title ? item.title : "title"}}
       </h2>
 
       <p class="mt-2 line-clamp-3 text-[14px] leading-[1.6] text-[#737d8c]">

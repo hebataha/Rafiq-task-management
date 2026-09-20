@@ -23,7 +23,6 @@ getProjects() {
     {
       headers: {
         apikey: this.apiKey,
-        Authorization: `Bearer ${access_token}`
       }
     }
   );

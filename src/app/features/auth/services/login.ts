@@ -17,7 +17,6 @@ export class LoginApi {
         },
             {
                 headers: {
-                    apikey: this.apiKey,
                     'Content-Type': 'application/json'
                 }
             })
@@ -34,7 +33,6 @@ export class LoginApi {
             }, {
 
             headers: {
-                apikey: this.apiKey,
                 'Content-Type': 'application/json'
             }
 

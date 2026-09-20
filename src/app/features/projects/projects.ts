@@ -7,7 +7,7 @@ import { DatePipe } from '@angular/common';
 
 
 @Component({
-  imports: [RouterLink ,DatePipe],
+  imports: [RouterLink, DatePipe],
   selector: 'app-projects',
   styleUrl: './projects.css',
   templateUrl: './projects.html',
@@ -23,10 +23,10 @@ export class Projects implements OnInit {
   getAllProjects() {
     this.loading = true
     this.ProjectService.getProjects().subscribe({
-      next: (res:any) => {
+      next: (res: any) => {
         console.log("projects added", res);
-        this.dataResult = res;
         this.loading = false;
+        this.dataResult = res;
 
 
       },

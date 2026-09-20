@@ -16,7 +16,6 @@ export class AuthUserService {
             this.apiUrl + '/auth/v1/user ', {
             headers: {
                 "apikey": this.apiKey,
-                "Authorization": 'Bearer ' + this.token,
                 "Content-Type": "application/json"
 
             }
@@ -36,8 +35,6 @@ export class AuthUserService {
 
             {
                 headers: {
-                    "apikey": this.apiKey,
-                    "Authorization": 'Bearer ' + this.token,
                     "Content-Type": "application/json"
 
                 },

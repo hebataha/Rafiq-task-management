@@ -18,8 +18,6 @@ export class AddProjectService {
             },
             {
                 headers: {
-                    apikey: this.apiKey,
-                    Authorization: `Bearer ${this.token}`,
                     'Content-Type': 'application/json'
                 }
             }

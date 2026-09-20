@@ -14,7 +14,17 @@ export class LoggedInHeader {
   constructor(private _AuthUserService: AuthUserService,private _Router:Router) {
     this.getData()
   }
+  getname(name?: string) {
+    if (!name) return "";
+    return name.trim()
+    .split(' ')
+    .filter(Boolean)
+    .map(word => word[0])
+    .join('')
+    .toUpperCase();
 
+  
+}
 
   getData() {
 
@@ -26,6 +36,7 @@ export class LoggedInHeader {
       error: (err: any) => {
         console.log('user error', err);
       }
+
     })
   }
 }

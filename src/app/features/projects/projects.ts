@@ -1,5 +1,5 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { ProjectService } from './services/project-service';
 import { AddProjectsModules } from './modules/add-projects';
 import { DatePipe } from '@angular/common';
@@ -12,6 +12,7 @@ import { DatePipe } from '@angular/common';
 })
 export class Projects implements OnInit {
   ProjectService = inject(ProjectService);
+  router = inject(Router)
   dataResult = signal<AddProjectsModules[]>([]);
   loading = signal(true);
 
@@ -25,11 +26,18 @@ export class Projects implements OnInit {
       next: (res: any) => {
         this.dataResult.set(Array.isArray(res) ? res : []);
         this.loading.set(false);
+        console.log(res);
       },
       error: (err) => {
         console.log(err);
         this.loading.set(false);
       }
     });
+  }
+
+  details(id: string) {
+    console.log("details");
+
+    this.router.navigate([`/project/${id}/epics`])
   }
 }

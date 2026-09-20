@@ -12,6 +12,11 @@ import { guestGuard } from './core/guards/guest-guard';
 import { ProjectDetails } from './features/projects/project-details/project-details';
 
 export const routes: Routes = [
+    {
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full',
+  },
   {
     path: '',
     component: AuthLayout,
@@ -31,15 +36,11 @@ export const routes: Routes = [
       },
 
       { path: 'projects/add-project', component: AddProjects, canActivate: [authGuard] },
-      { path: 'projects/add-project/:id/epics', component: ProjectDetails, canActivate: [authGuard] },
+      { path: 'project/:id/epics', component: ProjectDetails, canActivate: [authGuard] },
 
     ]
   },
 
-  {
-    path: '',
-    redirectTo: 'login',
-    pathMatch: 'full',
-  },
+
 
 ];

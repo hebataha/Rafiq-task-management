@@ -15,7 +15,7 @@ export class ProjectService {
     access_token = localStorage.getItem("access_token")
 
 
-getProjects() {
-  return this.http.get(this.apiUrl + '/rest/v1/projects');
-}
+    getProjects() {
+        return this.http.get(this.apiUrl + '/rest/v1/projects');
+    }
 }

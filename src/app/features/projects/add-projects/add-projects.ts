@@ -20,6 +20,7 @@ export class AddProjects {
   addProject = signal<AddProjectsModules>({
     name: '',
     description: '',
+    id:''
   })
 
 
@@ -41,6 +42,7 @@ export class AddProjects {
 
             name: '',
             description: '',
+            id: ''
           }
         )
 

@@ -1,10 +1,8 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ProjectService } from './services/project-service';
-import { HttpClient } from '@angular/common/http';
 import { AddProjectsModules } from './modules/add-projects';
 import { DatePipe } from '@angular/common';
-
 
 @Component({
   imports: [RouterLink, DatePipe],
@@ -14,28 +12,24 @@ import { DatePipe } from '@angular/common';
 })
 export class Projects implements OnInit {
   ProjectService = inject(ProjectService);
-  http = inject(HttpClient)
-  dataResult: AddProjectsModules[] = [];
-  loading: boolean = true;
+  dataResult = signal<AddProjectsModules[]>([]);
+  loading = signal(true);
+
   ngOnInit() {
     this.getAllProjects();
   }
+
   getAllProjects() {
-    this.loading = true
+    this.loading.set(true);
     this.ProjectService.getProjects().subscribe({
       next: (res: any) => {
-        console.log("projects added", res);
-        this.dataResult = res;
-        this.loading = false;
-
-
-
+        this.dataResult.set(Array.isArray(res) ? res : []);
+        this.loading.set(false);
       },
       error: (err) => {
         console.log(err);
-        this.loading = false
-
+        this.loading.set(false);
       }
-    })
+    });
   }
 }

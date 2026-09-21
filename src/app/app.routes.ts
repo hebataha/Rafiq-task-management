@@ -12,7 +12,7 @@ import { guestGuard } from './core/guards/guest-guard';
 import { ProjectDetails } from './features/projects/project-details/project-details';
 
 export const routes: Routes = [
-    {
+  {
     path: '',
     redirectTo: 'login',
     pathMatch: 'full',
@@ -21,9 +21,10 @@ export const routes: Routes = [
     path: '',
     component: AuthLayout,
     children: [
-      { path: 'login', component: Login ,    canActivate:[guestGuard]
-},
-      { path: 'sign-up', component: SignUp , canActivate:[guestGuard] }
+      {
+        path: 'login', component: Login, canActivate: [guestGuard]
+      },
+      { path: 'sign-up', component: SignUp, canActivate: [guestGuard] }
     ]
   },
 
@@ -37,6 +38,9 @@ export const routes: Routes = [
 
       { path: 'projects/add-project', component: AddProjects, canActivate: [authGuard] },
       { path: 'project/:id/epics', component: ProjectDetails, canActivate: [authGuard] },
+      { path: 'project/:id/tasks', component: ProjectDetails, canActivate: [authGuard] },
+      { path: 'project/:id/members', component: ProjectDetails, canActivate: [authGuard] },
+      { path: 'project/:id/details', component: ProjectDetails, canActivate: [authGuard] },
 
     ]
   },

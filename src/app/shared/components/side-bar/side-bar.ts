@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AuthUserService } from '../../layouts/auth-user-service';
 import { Router, RouterLink } from '@angular/router';
 import { ToastService } from '../../services/toast';
+import { ProjectId } from '../../../features/projects/services/project-id';
 
 @Component({
   imports: [RouterLink],
@@ -10,7 +11,7 @@ import { ToastService } from '../../services/toast';
   templateUrl: './side-bar.html',
 })
 export class SideBar {
-  constructor(private _AuthUserService: AuthUserService, private _Router: Router, private _ToastService: ToastService) {
+  constructor(private _AuthUserService: AuthUserService, private _Router: Router, private _ToastService: ToastService, public _ProjectId:ProjectId) {
 
   }
   isExpanded = false;

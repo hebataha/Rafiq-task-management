@@ -3,6 +3,7 @@ import { Router, RouterLink } from '@angular/router';
 import { ProjectService } from './services/project-service';
 import { AddProjectsModules } from './modules/add-projects';
 import { DatePipe } from '@angular/common';
+import { ProjectId } from './services/project-id';
 
 @Component({
   imports: [RouterLink, DatePipe],
@@ -12,7 +13,8 @@ import { DatePipe } from '@angular/common';
 })
 export class Projects implements OnInit {
   ProjectService = inject(ProjectService);
-  router = inject(Router)
+  router = inject(Router);
+  ProjectId = inject(ProjectId)
   dataResult = signal<AddProjectsModules[]>([]);
   loading = signal(true);
 
@@ -37,7 +39,7 @@ export class Projects implements OnInit {
 
   details(id: string) {
     console.log("details");
-
+    this.ProjectId.id.set(id)
     this.router.navigate([`/project/${id}/epics`])
   }
 }

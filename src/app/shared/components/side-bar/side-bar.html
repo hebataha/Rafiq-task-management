@@ -40,30 +40,39 @@
                             <span>Active Project Nation</span>
 
                         </div>
+                        @if(_ProjectId.id()){
                         <div class="arrow">
                             <img
                                 [src]="isExpanded ?'assets/images/icons/top-arrow.svg' :'assets/images/icons/down-arrow.svg'" />
 
                         </div>
+                        }
+
                     </a>
-                    @if(isExpanded){
+                    @if(isExpanded
+                    && _ProjectId.id()){
                     <div class="nav-list_dropdown__item--submenu flex flex-col gap-3 bg-white">
-                        <div class="topic flex gap-2 p-2 items-center">
+
+                        <a [routerLink]="['/project', _ProjectId.id(), 'epics']"
+                            class="topic flex gap-2 p-2 items-center">
                             <img src="assets/images/icons/epic.svg" />
                             <span>Epics</span>
-                        </div>
-                        <div class="topic flex gap-2 p-2 items-center">
+                        </a>
+                        <a [routerLink]="['/project', _ProjectId.id(), 'tasks']"
+                            class="topic flex gap-2 p-2 items-center">
                             <img src="assets/images/icons/tasks.svg" />
                             <span>tasks</span>
-                        </div>
-                        <div class="topic flex gap-2 p-2 items-center">
+                        </a>
+                        <a [routerLink]="['/project', _ProjectId.id(), 'members']"
+                            class="topic flex gap-2 p-2 items-center">
                             <img src="assets/images/icons/members.svg" />
                             <span>Members</span>
-                        </div>
-                        <div class="topic flex gap-2 p-2 items-center">
+                        </a>
+                        <a [routerLink]="['/project', _ProjectId.id(), 'details']"
+                            class="topic flex gap-2 p-2 items-center">
                             <img src="assets/images/icons/details.svg" />
                             <span>Details</span>
-                        </div>
+                        </a>
 
                     </div>
                     }

@@ -38,8 +38,9 @@
     @for (item of dataResult(); track $index) {
     <!-- Project Card -->
     <div
-      class="card-data rounded-[3px] border border-[#eef0f4] bg-white px-4 py-4 shadow-[0_1px_4px_rgba(15,23,42,0.03)]"
+      class="card-data rounded-[3px] border border-[#eef0f4] bg-white px-4 py-4 shadow-[0_1px_4px_rgba(15,23,42,0.03)] cursor-pointer"
       (click)="details(item?.id)"
+      
       >
       <h2 class="text-[16px] font-semibold text-[#222d3d]">
         {{item.name ? item.name : "title"}}

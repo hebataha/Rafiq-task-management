@@ -4,9 +4,10 @@ import { form, FormField, maxLength, minLength, required } from '@angular/forms/
 import { ToastService } from '../../../shared/services/toast';
 import { AddProjectService } from '../services/add-project-service';
 import { Router } from '@angular/router';
+import { Breadcrumb } from '../../../shared/components/breadcrumb/breadcrumb';
 
 @Component({
-  imports: [FormField],
+  imports: [FormField, Breadcrumb],
   selector: 'app-add-projects',
   styleUrl: './add-projects.css',
   templateUrl: './add-projects.html',

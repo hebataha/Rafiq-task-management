@@ -42,4 +42,9 @@ export class Projects implements OnInit {
     this.ProjectId.id.set(id)
     this.router.navigate([`/project/${id}/epics`])
   }
+
+ edit(id: string) {
+    this.ProjectId.id.set(id)
+    this.router.navigate([`/project/${id}/edit`])
+  }
 }

@@ -157,5 +157,8 @@ export class ProjectEdit implements OnInit {
       });
 
   }
+  cancel() {
+    this._Router.navigate(['/projects']);
 
+}
 }

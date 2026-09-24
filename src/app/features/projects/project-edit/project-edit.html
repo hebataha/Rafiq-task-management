@@ -1,132 +1,234 @@
 <div class="min-h-screen bg-[#F8F9FC] px-6 py-5">
 
-<app-breadcrumb category="projects" PageName="PROJECT TITLE" ></app-breadcrumb>
+  <app-breadcrumb
+    category="projects"
+    [PageName]="projectForm.name().value()">
+  </app-breadcrumb>
 
-    <!-- Page name -->
-    <h1 class="mb-7 text-[26px] font-bold leading-none text-[#182230]">
-        Edit Project
-    </h1>
-    
-    <!-- Card -->
-    <div
-        class="mx-auto w-full max-w-[760px] overflow-hidden rounded-[4px] border border-[#EEF0F4] bg-white shadow-[0_2px_8px_rgba(15,23,42,0.03)]">
+  <!-- Page name -->
+  <h1 class="mb-7 text-[26px] font-bold leading-none text-[#182230]">
+    Edit Project
+  </h1>
 
-        <!-- Header -->
-        <div class="flex items-start gap-3 border-b border-[#F0F1F3] px-7 py-5">
+  <!-- Card -->
+  <div
+    class="mx-auto w-full max-w-[760px] overflow-hidden rounded-[4px] border border-[#EEF0F4] bg-white shadow-[0_2px_8px_rgba(15,23,42,0.03)]"
+  >
 
-            <!-- Icon -->
-            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-[4px] bg-[#EEF5FF]">
-                <svg class="h-[18px] w-[18px] text-[#2563EB]" viewBox="0 0 24 24" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 8V16M8 12H16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
-                    <circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.5" />
-                </svg>
-            </div>
+    <!-- Header -->
+    <div class="flex items-start gap-3 border-b border-[#F0F1F3] px-7 py-5">
 
-            <div>
-                <h2 class="text-[16px] font-semibold leading-5 text-[#172033]">
-                  Edit Project
-                </h2>
+      <!-- Icon -->
+      <div
+        class="flex h-10 w-10 shrink-0 items-center justify-center rounded-[4px] bg-[#EEF5FF]"
+      >
+        <svg
+          class="h-[18px] w-[18px] text-[#2563EB]"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M12 8V16M8 12H16"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+          />
 
-                <p class="mt-[2px] text-[11px] text-[#8A94A6]">
-                    Define the scope and foundational details of your project.
-                </p>
-            </div>
+          <circle
+            cx="12"
+            cy="12"
+            r="8"
+            stroke="currentColor"
+            stroke-width="1.5"
+          />
+        </svg>
+      </div>
 
-        </div>
+      <div>
+        <h2 class="text-[16px] font-semibold leading-5 text-[#172033]">
+          Edit Project
+        </h2>
 
-
-        <!-- Form content -->
-        <form class="px-7 py-7">
-
-            <!-- Project name -->
-            <div>
-                <label for="projectname"
-                    class="mb-2 block text-[10px] font-semibold uppercase tracking-[0.04em] text-[#4B5565]">
-                    Project name
-                    <span class="text-[#D92D20]">*</span>
-                </label>
-
-                <input id="projectname" type="text" [formField]="projectForm.name"
-                    class="h-[42px] w-full rounded-[3px] border border-[#AFC6F7] bg-[#DCE8FF] px-3 text-[13px] text-[#344054] outline-none transition focus:border-[#4C8BF5] focus:ring-1 focus:ring-[#4C8BF5]" />
-
-
-            </div>
-
-            @if( projectForm.name().touched()&& projectForm.name().errors()){
-            @for (error of projectForm.name().errors() ; track error.kind) {
-            <div class="mt-4 flex gap-2 items-center bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-                <svg class="h-3 w-3" viewBox="0 0 24 24" fill="none">
-                    <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7" />
-                    <path d="M12 7.5V12.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
-                    <circle cx="12" cy="16" r="1" fill="currentColor" />
-                </svg>
-                <span> {{
-                error.message }}</span>
-               
-            </div>
-            }
-            }
-
-            <!-- Description -->
-            <div class="mt-7">
-
-                <div class="mb-2 flex items-center justify-between">
-
-                    <label for="description"
-                        class="text-[10px] font-semibold uppercase tracking-[0.04em] text-[#4B5565]">
-                        Description
-                    </label>
-
-                    <span class="text-[9px] text-[#A0A8B5]">
-                        Optional
-                    </span>
-
-                </div>
-
-                <textarea id="description" rows="4" [formField]="projectForm.description"
-                    placeholder="Provide a high-level overview of the project's architectural objectives and key milestones..."
-                    class="h-[105px] w-full resize-none rounded-[3px] border border-[#AFC6F7] bg-[#DCE8FF] px-3 py-3 text-[12px] leading-5 text-[#344054] placeholder:text-[#9FAFCB] outline-none transition focus:border-[#4C8BF5] focus:ring-1 focus:ring-[#4C8BF5]"></textarea>
-
-                <div class="mt-1 text-right text-[9px] text-[#667085]">
-                    0 / 500 characters
-                </div>
-
-            </div>
-
-
-            <!-- Buttons -->
-            <div class="mt-7 flex items-center justify-between">
-                <button type="button" class="text-[11px] font-medium text-[#475467] transition hover:text-[#101828]">
-                    Back
-                </button>
-
-                <button (click)="create()" type="button" [disabled]="projectForm().invalid()" 
-                    class="cursor-pointer h-[37px] rounded-[3px] bg-[#0667D8] px-6 text-[11px] font-semibold text-white shadow-[0_2px_4px_rgba(0,82,204,0.25)] transition hover:bg-[#055DBF] disabled:cursor-not-allowed">
-                    Create Project
-                </button>
-
-            </div>
-
-        </form>
-
-
-        <!-- Footer -->
-        <div class="flex items-start gap-2 border-t border-[#EEF0F2] bg-[#FBFCFE] px-7 py-4">
-
-            <svg class="mt-[1px] h-[14px] w-[14px] shrink-0 text-[#667085]" viewBox="0 0 24 24" fill="none">
-                <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6" />
-                <path d="M12 11V16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
-                <circle cx="12" cy="8" r="1" fill="currentColor" />
-            </svg>
-
-            <p class="text-[9px] leading-4 text-[#7C8594]">
-                <span class="font-semibold text-[#596273]">Pro Tip:</span>
-                You can invite project members and assign epics immediately after the
-                initial creation process.
-            </p>
-
-        </div>
+        <p class="mt-[2px] text-[11px] text-[#8A94A6]">
+          Update the project's name and description.
+        </p>
+      </div>
 
     </div>
+
+    <!-- Form content -->
+    <form class="px-7 py-7">
+
+      <!-- Project name -->
+      <div>
+
+        <label
+          for="projectname"
+          class="mb-2 block text-[10px] font-semibold uppercase tracking-[0.04em] text-[#4B5565]"
+        >
+          Project name
+          <span class="text-[#D92D20]">*</span>
+        </label>
+
+        <input
+          id="projectname"
+          type="text"
+          [formField]="projectForm.name"
+          class="h-[42px] w-full rounded-[3px] border border-[#AFC6F7] bg-[#DCE8FF] px-3 text-[13px] text-[#344054] outline-none transition focus:border-[#4C8BF5] focus:ring-1 focus:ring-[#4C8BF5]"
+        />
+
+      </div>
+
+      @if (
+        projectForm.name().touched() &&
+        projectForm.name().errors().length
+      ) {
+
+        @for (
+          error of projectForm.name().errors();
+          track error.kind
+        ) {
+
+          <div
+            class="mt-4 flex items-center gap-2 rounded border border-red-400 bg-red-100 px-4 py-3 text-red-700"
+            role="alert"
+          >
+            <svg
+              class="h-3 w-3"
+              viewBox="0 0 24 24"
+              fill="none"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="9"
+                stroke="currentColor"
+                stroke-width="1.7"
+              />
+
+              <path
+                d="M12 7.5V12.5"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+              />
+
+              <circle
+                cx="12"
+                cy="16"
+                r="1"
+                fill="currentColor"
+              />
+            </svg>
+
+            <span>
+              {{ error.message }}
+            </span>
+          </div>
+
+        }
+
+      }
+
+      <!-- Description -->
+      <div class="mt-7">
+
+        <div class="mb-2 flex items-center justify-between">
+
+          <label
+            for="description"
+            class="text-[10px] font-semibold uppercase tracking-[0.04em] text-[#4B5565]"
+          >
+            Description
+          </label>
+
+          <span class="text-[9px] text-[#A0A8B5]">
+            Optional
+          </span>
+
+        </div>
+
+        <textarea
+          id="description"
+          rows="4"
+          [formField]="projectForm.description"
+          placeholder="Provide a high-level overview of the project's architectural objectives and key milestones..."
+          class="h-[105px] w-full resize-none rounded-[3px] border border-[#AFC6F7] bg-[#DCE8FF] px-3 py-3 text-[12px] leading-5 text-[#344054] placeholder:text-[#9FAFCB] outline-none transition focus:border-[#4C8BF5] focus:ring-1 focus:ring-[#4C8BF5]"
+        ></textarea>
+
+        <div class="mt-1 text-right text-[9px] text-[#667085]">
+          {{ projectForm.description().value().length }} / 500 characters
+        </div>
+
+      </div>
+
+      <!-- Buttons -->
+      <div class="mt-7 flex items-center justify-between">
+
+        <button
+          type="button"
+          class="text-[11px] font-medium text-[#475467] transition hover:text-[#101828]"
+        >
+          Back
+        </button>
+
+        <button
+          type="button"
+          [disabled]="projectForm().invalid() || loading"
+          (click)="update()"
+          class="h-[37px] cursor-pointer rounded-[3px] bg-[#0667D8] px-6 text-[11px] font-semibold text-white shadow-[0_2px_4px_rgba(0,82,204,0.25)] transition hover:bg-[#055DBF] disabled:cursor-not-allowed disabled:opacity-60"
+        >
+          Save Changes
+        </button>
+
+      </div>
+
+    </form>
+
+    <!-- Footer -->
+    <div
+      class="flex items-start gap-2 border-t border-[#EEF0F2] bg-[#FBFCFE] px-7 py-4"
+    >
+
+      <svg
+        class="mt-[1px] h-[14px] w-[14px] shrink-0 text-[#667085]"
+        viewBox="0 0 24 24"
+        fill="none"
+      >
+        <circle
+          cx="12"
+          cy="12"
+          r="9"
+          stroke="currentColor"
+          stroke-width="1.6"
+        />
+
+        <path
+          d="M12 11V16"
+          stroke="currentColor"
+          stroke-width="1.6"
+          stroke-linecap="round"
+        />
+
+        <circle
+          cx="12"
+          cy="8"
+          r="1"
+          fill="currentColor"
+        />
+      </svg>
+
+      <p class="text-[9px] leading-4 text-[#7C8594]">
+        <span class="font-semibold text-[#596273]">
+          Pro Tip:
+        </span>
+
+        Update the project information and save your changes when you're ready.
+      </p>
+
+    </div>
+
+  </div>
+
 </div>

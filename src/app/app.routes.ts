@@ -10,6 +10,7 @@ import { authGuard } from './core/guards/auth-guard';
 import { AddProjects } from './features/projects/add-projects/add-projects';
 import { guestGuard } from './core/guards/guest-guard';
 import { ProjectDetails } from './features/projects/project-details/project-details';
+import { ProjectEdit } from './features/projects/project-edit/project-edit';
 
 export const routes: Routes = [
   {
@@ -41,7 +42,7 @@ export const routes: Routes = [
       { path: 'project/:id/tasks', component: ProjectDetails, canActivate: [authGuard] },
       { path: 'project/:id/members', component: ProjectDetails, canActivate: [authGuard] },
       { path: 'project/:id/details', component: ProjectDetails, canActivate: [authGuard] },
-      { path: 'project/:id/edit', component: AddProjects, canActivate: [authGuard] },
+      { path: 'project/:id/edit', component: ProjectEdit, canActivate: [authGuard] },
 
 
     ]

@@ -31,6 +31,7 @@
         </ul>
         <div class="nav-list_dropdown">
             <ul class="nav-list_dropdown__item ">
+                @if(showProjectMenu | async){
                 <li class=" cursor-pointer relative">
                     <a class="nav-list_dropdown__item--child flex gap-2 p-2 items-center justify-between"
                         (click)="toggle()">
@@ -79,6 +80,7 @@
 
 
                 </li>
+                }
                 <li>
                     <a class="nav-list_dropdown__item--child"></a>
                 </li>

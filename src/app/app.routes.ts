@@ -11,6 +11,7 @@ import { AddProjects } from './features/projects/add-projects/add-projects';
 import { guestGuard } from './core/guards/guest-guard';
 import { ProjectDetails } from './features/projects/project-details/project-details';
 import { ProjectEdit } from './features/projects/project-edit/project-edit';
+import { ForgotPassword } from './features/auth/pages/forgot-password/forgot-password';
 
 export const routes: Routes = [
   {
@@ -25,7 +26,9 @@ export const routes: Routes = [
       {
         path: 'login', component: Login, canActivate: [guestGuard]
       },
-      { path: 'sign-up', component: SignUp, canActivate: [guestGuard] }
+      { path: 'sign-up', component: SignUp, canActivate: [guestGuard] },
+      { path: 'forget-password', component: ForgotPassword, canActivate: [guestGuard] }
+
     ]
   },
 

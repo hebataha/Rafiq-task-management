@@ -1,2 +1,172 @@
-<p>sign-up works!</p>
+<div class="min-h-screen bg-[#f8f8ff] flex items-center justify-center px-4 py-10">
 
+    <div class="w-full max-w-[500px] bg-white rounded-md shadow-sm px-10 py-10">
+
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <h1 class="text-[26px] font-bold text-slate-900">
+                Create your workspace
+            </h1>
+
+            <p class="text-sm text-slate-400 mt-1">
+                Join the editorial approach to task management.
+            </p>
+        </div>
+
+        <form class="space-y-5">
+
+            <!-- Name -->
+            <div>
+                <label for="name" class="block text-[11px] font-semibold uppercase text-slate-600 mb-2">
+                    Name
+                </label>
+
+                <input id="name" type="text" placeholder="Enter your full name" class="w-full h-11 px-4 rounded bg-[#e8efff]
+                 text-sm text-slate-700 placeholder:text-slate-400
+                 border border-transparent
+                 outline-none
+                 focus:border-blue-500
+                 focus:ring-2 focus:ring-blue-100
+                 transition" [formField]="registerForm.name" />
+
+                <p class="text-[10px] text-slate-300 mt-1">
+                    5-50 characters, letters only.
+                </p>
+                @if(registerForm.name().touched() && registerForm.name().errors() ){
+                @for (error of registerForm.name().errors(); track $index) {
+                <div class="mt-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                    {{
+                    error.message }}</div>
+                }
+                }
+
+            </div>
+
+            <!-- Email -->
+            <div>
+                <label for="email" class="block text-[11px] font-semibold uppercase text-slate-600 mb-2">
+                    Email
+                </label>
+
+                <input id="email" type="email" placeholder="yourname@company.com" class="w-full h-11 px-4 rounded bg-[#e8efff]
+                 text-sm text-slate-700 placeholder:text-slate-400
+                 border border-transparent
+                 outline-none
+                 focus:border-blue-500
+                 focus:ring-2 focus:ring-blue-100
+                 transition"
+                 [formField]="registerForm.email"
+                  />
+            </div>
+            @if(registerForm.email().touched() && registerForm.email().errors() ){
+            @for (error of registerForm.email().errors(); track $index) {
+            <div class="mt-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                {{ error.message }}</div>
+            }
+            }
+            <!-- Job Title -->
+            <div>
+                <label for="jobTitle" class="block text-[11px] font-semibold uppercase text-slate-600 mb-2">
+                    Job Title
+                    <span class="text-slate-400 font-normal">(Optional)</span>
+                </label>
+
+                <input id="jobTitle" type="text" placeholder="e.g. Project Manager" class="w-full h-11 px-4 rounded bg-[#e8efff]
+                 text-sm text-slate-700 placeholder:text-slate-400
+                 border border-transparent
+                 outline-none
+                 focus:border-blue-500
+                 focus:ring-2 focus:ring-blue-100
+                 transition"
+                  [formField]="registerForm.password" />
+            </div>
+
+            <!-- Passwords -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                <!-- Password -->
+                <div>
+                    <label for="password" class="block text-[11px] font-semibold uppercase text-slate-600 mb-2">
+                        Password
+                    </label>
+
+                    <div class="relative">
+                        <input id="password" type="password" placeholder="Password" class="w-full h-11 px-4 pr-11 rounded bg-[#e8efff]
+                     text-sm text-slate-700 placeholder:text-slate-400
+                     border border-transparent
+                     outline-none
+                     focus:border-blue-500
+                     focus:ring-2 focus:ring-blue-100
+                     transition" />
+
+                        <button type="button" class="absolute right-3 top-1/2 -translate-y-1/2
+                     text-slate-400 hover:text-slate-600 cursor-pointer">
+                            <!-- eye icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.25 12s3.75-6.75 9.75-6.75S21.75 12 21.75 12
+                     18 18.75 12 18.75 2.25 12 2.25 12Z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Confirm -->
+                <div>
+                    <label for="confirmPassword" class="block text-[11px] font-semibold uppercase text-slate-600 mb-2">
+                        Confirm Password
+                    </label>
+
+                    <input id="confirmPassword" type="password" placeholder="Repeat your password" class="w-full h-11 px-4 rounded bg-[#e8efff]
+                   text-sm text-slate-700 placeholder:text-slate-400
+                   border border-transparent
+                   outline-none
+                   focus:border-blue-500
+                   focus:ring-2 focus:ring-blue-100
+                   transition" />
+                </div>
+
+            </div>
+
+            <!-- Password requirements -->
+            <div class="bg-[#edf2ff] rounded-md px-4 py-3 space-y-1">
+                <p class="flex items-center gap-2 text-[11px] text-slate-500">
+                    <span class="text-emerald-500">✓</span>
+                    At least 8 characters
+                </p>
+
+                <p class="flex items-center gap-2 text-[11px] text-slate-500">
+                    <span class="w-2 h-2 border border-slate-400 rounded-full"></span>
+                    One uppercase, lowercase, and digit
+                </p>
+
+                <p class="flex items-center gap-2 text-[11px] text-slate-500">
+                    <span class="w-2 h-2 border border-slate-400 rounded-full"></span>
+                    One special character
+                </p>
+            </div>
+
+            <!-- Button -->
+            <button type="submit" class="w-full h-11 rounded
+               bg-[#0865c8]
+               hover:bg-[#0757aa]
+               text-white text-sm font-medium
+               transition cursor-pointer">
+                Create Account
+            </button>
+
+        </form>
+
+        <!-- Login -->
+        <div class="text-center mt-8 text-xs text-slate-400">
+            Already have an account?
+            <a routerLink="/login" class="text-slate-700 font-medium hover:text-blue-600">
+                Log in
+            </a>
+        </div>
+
+    </div>
+
+</div>

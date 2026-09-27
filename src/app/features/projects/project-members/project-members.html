@@ -1,1 +1,148 @@
-<p>project-members works!</p>
+<div class="min-h-screen bg-slate-50 px-6 py-5">
+
+<app-breadcrumb category="PROJECTS" PageName="PR0JECT NAME" subName="MEMBERS"></app-breadcrumb>
+
+  <!-- Header -->
+  <div class="mb-10 flex items-center justify-between">
+    <h1 class="text-3xl font-bold text-slate-900">
+      Project Members
+    </h1>
+
+    <button
+      class="flex items-center gap-2 rounded-md bg-blue-600 px-4 py-2.5 text-sm font-medium text-white shadow-sm transition hover:bg-blue-700"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-4 w-4"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M18 9v6m3-3h-6m-3 4a4 4 0 10-8 0v1h8v-1zm-4-7a4 4 0 100-8 4 4 0 000 8z"
+        />
+      </svg>
+
+      Invite Member
+    </button>
+  </div>
+
+  <!-- Members Card -->
+  <div class="mx-auto max-w-3xl overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
+
+    <!-- Table Header -->
+    <div class="grid grid-cols-[1fr_180px] bg-slate-50 px-6 py-4">
+      <span class="text-xs font-semibold uppercase tracking-wide text-slate-500">
+        Member
+      </span>
+
+      <span class="text-xs font-semibold uppercase tracking-wide text-slate-500">
+        Role
+      </span>
+    </div>
+
+    <!-- Row -->
+    <div class="grid grid-cols-[1fr_180px] items-center border-t border-slate-100 px-6 py-4">
+      <div class="flex items-center gap-4">
+        <div class="flex h-10 w-10 items-center justify-center rounded-md bg-blue-100 text-sm font-semibold text-blue-700">
+          MT
+        </div>
+
+        <div>
+          <p class="text-sm font-semibold text-slate-900">
+            Mahmoud Taha
+          </p>
+
+          <p class="text-xs text-slate-400">
+            mahmoud.taha.dev@gmail.com
+          </p>
+        </div>
+      </div>
+
+      <div>
+        <span class="rounded-full bg-blue-600 px-3 py-1 text-[10px] font-semibold uppercase text-white">
+          Owner
+        </span>
+      </div>
+    </div>
+
+    <!-- Row -->
+    <div class="grid grid-cols-[1fr_180px] items-center border-t border-slate-100 px-6 py-4">
+      <div class="flex items-center gap-4">
+        <div class="flex h-10 w-10 items-center justify-center rounded-md bg-indigo-100 text-sm font-semibold text-indigo-700">
+          SJ
+        </div>
+
+        <div>
+          <p class="text-sm font-semibold text-slate-900">
+            Sarah Jenkins
+          </p>
+
+          <p class="text-xs text-slate-400">
+            s.jenkins@workspace.com
+          </p>
+        </div>
+      </div>
+
+      <div>
+        <span class="rounded-full bg-slate-200 px-3 py-1 text-[10px] font-semibold uppercase text-slate-600">
+          Admin
+        </span>
+      </div>
+    </div>
+
+    <!-- Row -->
+    <div class="grid grid-cols-[1fr_180px] items-center border-t border-slate-100 px-6 py-4">
+      <div class="flex items-center gap-4">
+        <div class="flex h-10 w-10 items-center justify-center rounded-md bg-blue-100 text-sm font-semibold text-blue-700">
+          DL
+        </div>
+
+        <div>
+          <p class="text-sm font-semibold text-slate-900">
+            David Lee
+          </p>
+
+          <p class="text-xs text-slate-400">
+            d.lee@workspace.com
+          </p>
+        </div>
+      </div>
+
+      <div>
+        <span class="rounded-full bg-blue-100 px-3 py-1 text-[10px] font-semibold uppercase text-blue-700">
+          Member
+        </span>
+      </div>
+    </div>
+
+    <!-- Row -->
+    <div class="grid grid-cols-[1fr_180px] items-center border-t border-slate-100 px-6 py-4">
+      <div class="flex items-center gap-4">
+        <div class="flex h-10 w-10 items-center justify-center rounded-md bg-sky-100 text-sm font-semibold text-sky-700">
+          AM
+        </div>
+
+        <div>
+          <p class="text-sm font-semibold text-slate-900">
+            Alisa Mayer
+          </p>
+
+          <p class="text-xs text-slate-400">
+            a.mayer@workspace.com
+          </p>
+        </div>
+      </div>
+
+      <div>
+        <span class="rounded-full bg-slate-100 px-3 py-1 text-[10px] font-semibold uppercase text-slate-500">
+          Viewer
+        </span>
+      </div>
+    </div>
+
+  </div>
+</div>

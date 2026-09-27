@@ -8,5 +8,7 @@ import { Component, Input } from '@angular/core';
 })
 export class Breadcrumb {
   @Input() category = ""
-  @Input() PageName =""
+  @Input() PageName = ""
+  @Input() subName = ""
+
 }

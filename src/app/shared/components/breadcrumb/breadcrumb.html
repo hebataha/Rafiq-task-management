@@ -4,17 +4,19 @@
     {{ category }}
   </span>
 
-  <span class="text-slate-300">/</span>
+        <img src="assets/images/icons/breadcrumb-arrow.svg"/>
 
   <span
     [class.text-[#2563EB]]="!subName"
-    [class.text-slate-300]="subName"
+    [class.text-slate-400]="subName"
   >
     {{ PageName }}
   </span>
 
   @if (subName) {
-    <span class="text-slate-300">/</span>
+    <span class="text-slate-400">
+        <img src="assets/images/icons/breadcrumb-arrow.svg"/>
+    </span>
 
     <span class="text-[#2563EB]">
       {{ subName }}

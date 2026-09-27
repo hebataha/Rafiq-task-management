@@ -1,0 +1,168 @@
+<div class="min-h-screen bg-[#f8f9fd] px-6 py-8">
+
+  <!-- Breadcrumb -->
+  <div class="mb-5 text-[10px] font-medium uppercase tracking-wide text-slate-400">
+    PROJECTS
+    <span class="mx-2">›</span>
+    PROJECT ALPHA
+    <span class="mx-2">›</span>
+    EPICS
+    <span class="mx-2">›</span>
+    <span class="text-slate-700">NEW EPIC</span>
+  </div>
+
+  <!-- Page title -->
+  <div class="mb-8">
+    <h1 class="text-3xl font-bold text-slate-900">
+      Create New Epic
+    </h1>
+
+    <p class="mt-2 max-w-[500px] text-sm leading-5 text-slate-500">
+      Define a major project phase or high-level milestone to group
+      related tasks and track architectural progress.
+    </p>
+  </div>
+
+  <!-- Form Card -->
+  <div class="max-w-5xl rounded-md bg-white px-10 py-9 shadow-sm">
+
+    <form class="space-y-8">
+
+      <!-- Title -->
+      <div class="grid grid-cols-[180px_1fr] items-start gap-8">
+
+        <label class="pt-3 text-xs font-semibold uppercase tracking-wide text-slate-700">
+          Title <span class="text-red-500">*</span>
+        </label>
+
+        <div>
+          <input
+            type="text"
+            placeholder="e.g. Structural Foundation Phase"
+            class="h-11 w-full rounded-sm border border-transparent
+                   bg-blue-100/70 px-4 text-sm text-slate-700
+                   outline-none transition
+                   placeholder:text-slate-400
+                   focus:border-blue-500 focus:bg-white"
+          />
+
+          <!-- Validation -->
+          <p class="mt-2 flex items-center gap-1 text-[10px] font-medium uppercase text-red-500">
+            <span>⊗</span>
+            Title is required (minimum 3 characters)
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Description -->
+      <div class="grid grid-cols-[180px_1fr] items-start gap-8">
+
+        <div>
+          <label class="text-xs font-semibold uppercase tracking-wide text-slate-700">
+            Description
+          </label>
+
+          <p class="mt-1 text-[10px] text-slate-400">
+            Optional
+          </p>
+        </div>
+
+        <div>
+          <textarea
+            rows="5"
+            placeholder="Describe the scope and objectives of this epic..."
+            class="w-full resize-none rounded-sm border border-transparent
+                   bg-blue-100/70 px-4 py-3 text-sm text-slate-700
+                   outline-none transition
+                   placeholder:text-slate-400
+                   focus:border-blue-500 focus:bg-white"
+          ></textarea>
+
+          <div class="mt-1 text-right text-[10px] text-slate-400">
+            0 / 500 characters
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Assignee + Deadline -->
+      <div class="grid grid-cols-[180px_1fr] gap-8">
+
+        <div></div>
+
+        <div class="grid grid-cols-2 gap-8">
+
+          <!-- Assignee -->
+          <div>
+            <label class="mb-2 block text-xs font-semibold uppercase tracking-wide text-slate-700">
+              Assignee
+            </label>
+
+            <select
+              class="h-11 w-full rounded-sm border border-transparent
+                     bg-blue-100/70 px-4 text-sm text-slate-700
+                     outline-none transition
+                     focus:border-blue-500 focus:bg-white"
+            >
+              <option selected disabled>
+                Select a member...
+              </option>
+
+              <option>
+                Mahmoud Taha
+              </option>
+
+              <option>
+                Ahmed Ali
+              </option>
+            </select>
+          </div>
+
+          <!-- Deadline -->
+          <div>
+            <label class="mb-2 block text-xs font-semibold uppercase tracking-wide text-slate-700">
+              Deadline
+            </label>
+
+            <input
+              type="date"
+              class="h-11 w-full rounded-sm border border-transparent
+                     bg-blue-100/70 px-4 text-sm text-slate-700
+                     outline-none transition
+                     focus:border-blue-500 focus:bg-white"
+            />
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="flex justify-end gap-7 pt-4">
+
+        <button
+          type="button"
+          class="px-3 py-2 text-sm font-medium text-slate-600
+                 transition hover:text-slate-900"
+        >
+          Cancel
+        </button>
+
+        <button
+          type="submit"
+          class="rounded-sm bg-blue-600 px-8 py-2.5
+                 text-sm font-medium text-white shadow-sm
+                 transition hover:bg-blue-700
+                 focus:outline-none focus:ring-2
+                 focus:ring-blue-500 focus:ring-offset-2"
+        >
+          Create Epic
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+
+</div>

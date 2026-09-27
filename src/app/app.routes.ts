@@ -13,6 +13,7 @@ import { ProjectDetails } from './features/projects/project-details/project-deta
 import { ProjectEdit } from './features/projects/project-edit/project-edit';
 import { ForgotPassword } from './features/auth/pages/forgot-password/forgot-password';
 import { ProjectMembers } from './features/projects/project-members/project-members';
+import { ProjectCreateEpic } from './features/projects/project-create-epic/project-create-epic';
 
 export const routes: Routes = [
   {
@@ -43,6 +44,7 @@ export const routes: Routes = [
 
       { path: 'projects/add-project', component: AddProjects, canActivate: [authGuard] },
       { path: 'project/:id/epics', component: ProjectDetails, canActivate: [authGuard] },
+      { path: 'project/:id/epics/new', component: ProjectCreateEpic, canActivate: [authGuard] },
       { path: 'project/:id/tasks', component: ProjectDetails, canActivate: [authGuard] },
       { path: 'project/:id/members', component: ProjectMembers, canActivate: [authGuard] },
       { path: 'project/:id/details', component: ProjectEdit, canActivate: [authGuard] },

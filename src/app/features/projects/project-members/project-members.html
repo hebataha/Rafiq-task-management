@@ -1,75 +1,83 @@
 <div class="min-h-screen bg-slate-50 px-6 py-5">
 
-<app-breadcrumb category="PROJECTS" PageName="PR0JECT NAME" subName="MEMBERS"></app-breadcrumb>
+    <app-breadcrumb category="PROJECTS" PageName="PR0JECT NAME" subName="MEMBERS"></app-breadcrumb>
 
-  <!-- Header -->
-  <div class="mb-10 flex items-center justify-between">
-    <h1 class="text-3xl font-bold text-slate-900">
-      Project Members
-    </h1>
+    <!-- Header -->
+    <div class="mb-10 flex items-center justify-between">
+        <h1 class="text-3xl font-bold text-slate-900">
+            Project Members
+        </h1>
 
-    <button
-      class="flex items-center gap-2 rounded-md bg-blue-600 px-4 py-2.5 text-sm font-medium text-white shadow-sm transition hover:bg-blue-700"
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        class="h-4 w-4"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-      >
+        <button
+            class="flex items-center gap-2 rounded-md bg-blue-600 px-4 py-2.5 text-sm font-medium text-white shadow-sm transition hover:bg-blue-700">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M18 9v6m3-3h-6m-3 4a4 4 0 10-8 0v1h8v-1zm-4-7a4 4 0 100-8 4 4 0 000 8z" />
+            </svg>
+
+            Invite Member
+        </button>
+    </div>
+
+    @if (loading()) {
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M18 9v6m3-3h-6m-3 4a4 4 0 10-8 0v1h8v-1zm-4-7a4 4 0 100-8 4 4 0 000 8z"
-        />
-      </svg>
+            d="M2 18C1.45 18 0.979167 17.8042 0.5875 17.4125C0.195833 17.0208 0 16.55 0 16V2C0 1.45 0.195833 0.979167 0.5875 0.5875C0.979167 0.195833 1.45 0 2 0H9V2H2V16H9V18H2ZM13 14L11.625 12.55L14.175 10H6V8H14.175L11.625 5.45L13 4L18 9L13 14Z"
+            fill="color-primary" />
+    </svg>
+    }
+    <!-- Members Card -->
+    @if(memberData){
+    <div class="mx-auto max-w-3xl overflow-hidden rounded-lg border-surface-low bg-white shadow-sm">
 
-      Invite Member
-    </button>
-  </div>
+        <!-- Table Header -->
+        <div class="grid grid-cols-[1fr_180px] bg-slate-50 px-6 py-4">
 
-  <!-- Members Card -->
-  <div class="mx-auto max-w-3xl overflow-hidden rounded-lg border-surface-low bg-white shadow-sm">
+            <span class="text-xs font-semibold uppercase tracking-wide text-blue font-bold">
+                Member
+            </span>
 
-    <!-- Table Header -->
-    <div class="grid grid-cols-[1fr_180px] bg-slate-50 px-6 py-4">
-      <span class="text-xs font-semibold uppercase tracking-wide text-blue font-bold">
-        Member
-      </span>
-
-      <span class="text-xs font-semibold uppercase tracking-wide text-blue font-bold">
-        Role
-      </span>
-    </div>
-
-    <!-- Row -->
-    <div class="grid grid-cols-[1fr_180px] items-center  border-surface-low px-6 py-4">
-      <div class="flex items-center gap-4">
-        <div class="flex h-10 w-10 items-center justify-center rounded-md bg-blue-100 text-sm font-semibold text-blue-700">
-          MT
+            <span class="text-xs font-semibold uppercase tracking-wide text-blue font-bold">
+                Role
+            </span>
         </div>
 
-        <div>
-          <p class="text-sm font-semibold text-slate-900">
-            Mahmoud Taha
-          </p>
+        <!-- Row -->
+        <div class="grid grid-cols-[1fr_180px] items-center  border-surface-low px-6 py-4">
+            @for (member of memberData; track $index) {
+            <div class="flex items-center gap-4">
+                <div
+                    class="flex h-10 w-10 items-center justify-center rounded-md bg-blue-100 text-sm font-semibold text-blue-700">
+                   {{getname(member.metadata.name)}}
+                </div>
 
-          <p class="text-xs text-slate-400">
-            mahmoud.taha.dev@gmail.com
-          </p>
+                <div>
+                    <p class="text-sm font-semibold text-slate-900">
+                       {{member.metadata.name}}
+                    </p>
+
+                    <p class="text-xs text-slate-400">
+                         {{member.metadata.email}}
+                    </p>
+                </div>
+            </div>
+
+            <div>
+                <span class="rounded-full bg-blue-600 px-3 py-1 text-[10px] font-semibold uppercase text-white"
+               [ngClass]="member.role"
+                >
+                    {{member.role}}
+                </span>
+            </div>
+            }
         </div>
-      </div>
 
-      <div>
-        <span class="rounded-full bg-blue-600 px-3 py-1 text-[10px] font-semibold uppercase text-white">
-          Owner
-        </span>
-      </div>
+
+
+
+
     </div>
+    }
 
-
-
-  </div>
 </div>

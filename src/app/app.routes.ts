@@ -44,7 +44,7 @@ export const routes: Routes = [
       { path: 'project/:id/epics', component: ProjectDetails, canActivate: [authGuard] },
       { path: 'project/:id/tasks', component: ProjectDetails, canActivate: [authGuard] },
       { path: 'project/:id/members', component: ProjectDetails, canActivate: [authGuard] },
-      { path: 'project/:id/details', component: ProjectDetails, canActivate: [authGuard] },
+      { path: 'project/:id/details', component: ProjectEdit, canActivate: [authGuard] },
       { path: 'project/:id/edit', component: ProjectEdit, canActivate: [authGuard] },
 
 

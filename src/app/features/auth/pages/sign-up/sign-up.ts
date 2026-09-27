@@ -1,6 +1,8 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { email, form, FormField, maxLength, minLength, pattern, required } from '@angular/forms/signals';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { SignUpService } from '../../services/sign-up';
+import { ToastService } from '../../../../shared/services/toast';
 
 @Component({
   imports: [RouterLink, FormField],
@@ -10,6 +12,12 @@ import { RouterLink } from '@angular/router';
 })
 
 export class SignUp {
+  _SignUpService = inject(SignUpService);
+  _ToastService = inject(ToastService);
+  _Router = inject(Router)
+
+  showPass: boolean = false;
+  loading: boolean = false;
   signUpForm = signal({
     name: "",
     email: "",
@@ -18,6 +26,9 @@ export class SignUp {
     jobTitle: ""
 
   })
+  toggleShowPass() {
+    return this.showPass = !this.showPass;
+  }
 
   registerForm = form(this.signUpForm, (fields) => {
     required(fields.name, { message: "name is required" });
@@ -47,4 +58,62 @@ export class SignUp {
 
 
   })
+
+  hasMinLength() {
+    return this.signUpForm().password.length >= 8;
+  }
+  hasUpperLowerDigit() {
+    const password = this.signUpForm().password;
+    const hasUppercase = /[A-Z]/.test(password);
+    const hasLowercase = /[a-z]/.test(password);
+    const hasDigit = /\d/.test(password);
+    return hasUppercase && hasLowercase && hasDigit;
+  }
+  hasSpecialCharacter() {
+    const password = this.signUpForm().password;
+
+    return /[!@#$%^&*]/.test(password);
+  }
+
+
+
+  signUp() {
+    const name = this.signUpForm().name;
+    const email = this.signUpForm().email;
+    const password = this.signUpForm().password;
+    const confirmPassword = this.signUpForm().confirmPassword;
+    const jobTitle = this.signUpForm().jobTitle;
+    const data = {
+      "name": name,
+      "job_title": jobTitle
+    }
+
+    if (password !== confirmPassword) {
+      return;
+    }
+    this.loading = true;
+    this._SignUpService.signUp(email, password, data).subscribe({
+      next: (res: any) => {
+        console.log("signup", res);
+        this.loading = false;
+        this._ToastService.show(
+          'account created succefully',
+          "success"
+        ),
+          this._Router.navigate(['/login']);
+
+
+      },
+      error: (err: any) => {
+        console.log(err);
+        this.loading = false;
+        this._ToastService.show(
+          'something went error',
+          "error"
+        )
+
+
+      }
+    })
+  }
 }

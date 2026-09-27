@@ -44,10 +44,7 @@ export class Login {
           this._Router.navigate(['/projects'])
         }
         localStorage.setItem("refresh_token", res.refresh_token);
-        this._ToastService.show(
-          'logined in succefully',
-          "success"
-        )
+      
 
 
 

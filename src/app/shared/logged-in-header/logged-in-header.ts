@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { AuthUserService } from '../layouts/auth-user-service';
 import { AuthUser } from '../layouts/auth-user';
 import { Router } from '@angular/router';
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class LoggedInHeader implements OnInit {
   userData: AuthUser | null = null;
-  loading: boolean = false;
+  loading = signal(false);
   constructor(private _AuthUserService: AuthUserService, private _Router: Router) {
 
 
@@ -33,17 +33,19 @@ export class LoggedInHeader implements OnInit {
   }
 
   getData() {
-    this.loading = true;
+    this.loading.set(true);
 
     this._AuthUserService.getUserData().subscribe({
       next: (res: any) => {
         console.log(' user data', res.user_metadata);
         this.userData = res.user_metadata;
-        this.loading = false;
+        this.loading.set(false);
+
       },
       error: (err: any) => {
         console.log('user error', err);
-        this.loading = true
+        this.loading.set(false);
+
       }
 
     })

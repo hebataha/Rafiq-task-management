@@ -3,6 +3,8 @@
     .user {
         &__info {
             text-align: end;
+            display:flex;
+            justify-content: center;
             &--name {
                 font-size: 14px;
                 color: var(----color-slate-100);

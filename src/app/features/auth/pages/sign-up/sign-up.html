@@ -54,9 +54,7 @@
                  outline-none
                  focus:border-blue-500
                  focus:ring-2 focus:ring-blue-100
-                 transition"
-                 [formField]="registerForm.email"
-                  />
+                 transition" [formField]="registerForm.email" />
             </div>
             @if(registerForm.email().touched() && registerForm.email().errors() ){
             @for (error of registerForm.email().errors(); track $index) {
@@ -77,8 +75,7 @@
                  outline-none
                  focus:border-blue-500
                  focus:ring-2 focus:ring-blue-100
-                 transition"
-                  [formField]="registerForm.password" />
+                 transition" [formField]="registerForm.jobTitle" />
             </div>
 
             <!-- Passwords -->
@@ -91,16 +88,16 @@
                     </label>
 
                     <div class="relative">
-                        <input id="password" type="password" placeholder="Password" class="w-full h-11 px-4 pr-11 rounded bg-[#e8efff]
+                        <input id="password" [type]="showPass ? `text` : `password`" placeholder="Password" class="w-full h-11 px-4 pr-11 rounded bg-[#e8efff]
                      text-sm text-slate-700 placeholder:text-slate-400
                      border border-transparent
                      outline-none
                      focus:border-blue-500
                      focus:ring-2 focus:ring-blue-100
-                     transition" />
+                     transition" [formField]="registerForm.password" />
 
                         <button type="button" class="absolute right-3 top-1/2 -translate-y-1/2
-                     text-slate-400 hover:text-slate-600 cursor-pointer">
+                     text-slate-400 hover:text-slate-600 cursor-pointer" (click)="toggleShowPass()">
                             <!-- eye icon -->
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
@@ -125,38 +122,86 @@
                    outline-none
                    focus:border-blue-500
                    focus:ring-2 focus:ring-blue-100
-                   transition" />
+                   transition" [formField]="registerForm.confirmPassword" />
                 </div>
 
             </div>
+            @if (registerForm.confirmPassword().touched()) {
+
+            @if(signUpForm().confirmPassword === signUpForm().password){
+            <span class="text-emerald-500 my-3 block">✓ Pasword Matches</span>
+
+            }@else{
+            <span class="text-red-500 my-3 block">X Pasword don't Matches</span>
+            }
+
+            }
+
 
             <!-- Password requirements -->
             <div class="bg-[#edf2ff] rounded-md px-4 py-3 space-y-1">
                 <p class="flex items-center gap-2 text-[11px] text-slate-500">
+                    @if (registerForm.password().touched()) {
+
+                    @if( hasMinLength()){
                     <span class="text-emerald-500">✓</span>
+
+                    }@else{
+                    <span class="text-red-500">X</span>
+
+                    }
+                    }
                     At least 8 characters
                 </p>
 
                 <p class="flex items-center gap-2 text-[11px] text-slate-500">
-                    <span class="w-2 h-2 border border-slate-400 rounded-full"></span>
+                    @if (registerForm.password().touched()) {
+
+                    @if( hasUpperLowerDigit()){
+                    <span class="text-emerald-500">✓</span>
+
+                    }@else{
+                    <span class="text-red-500">X</span>
+
+                    }
+                    }
+                    <!-- <span class="w-2 h-2 border border-slate-400 rounded-full"></span> -->
                     One uppercase, lowercase, and digit
                 </p>
 
                 <p class="flex items-center gap-2 text-[11px] text-slate-500">
-                    <span class="w-2 h-2 border border-slate-400 rounded-full"></span>
+                    <!-- <span class="w-2 h-2 border border-slate-400 rounded-full"></span> -->
+                    @if (registerForm.password().touched()) {
+
+                    @if( hasSpecialCharacter()){
+                    <span class="text-emerald-500">✓</span>
+
+                    }@else{
+                    <span class="text-red-500">X</span>
+
+                    }
+                    }
                     One special character
                 </p>
             </div>
 
-            <!-- Button -->
-            <button type="submit" class="w-full h-11 rounded
+            <!-- Button --> 
+            <button type="submit" class="w-full h-11 rounded flex justify-center items-center
                bg-[#0865c8]
-               hover:bg-[#0757aa]
                text-white text-sm font-medium
-               transition cursor-pointer">
-                Create Account
-            </button>
+               transition" type="button" [disabled]="registerForm().invalid()" (click)="signUp()">
+                @if(loading){
+                <svg aria-hidden="true" class="w-8 h-8 text-neutral-tertiary animate-spin fill-brand"
+                    viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50 91.5094C27.4013 91.5094 9.08144 73.1895 9.08144 50.5908Z"
+                        fill="currentColor" />
+                </svg>
+                }@else{
+            <span>Create Account</span>    
 
+                }
+            </button>
         </form>
 
         <!-- Login -->

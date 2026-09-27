@@ -3,9 +3,10 @@ import { Breadcrumb } from '../../../shared/components/breadcrumb/breadcrumb';
 import { ProjectMembersService } from '../services/project-members-service';
 import { ActivatedRoute } from '@angular/router';
 import { NgClass } from '@angular/common';
+import { ProjectMembersLoader } from '../project-members-loader/project-members-loader';
 
 @Component({
-  imports: [Breadcrumb , NgClass],
+  imports: [Breadcrumb, NgClass, ProjectMembersLoader],
   selector: 'app-project-members',
   styleUrl: './project-members.css',
   templateUrl: './project-members.html',
@@ -22,27 +23,32 @@ export class ProjectMembers implements OnInit {
       this.getMmebers(id)
 
     }
-    
- 
+
+
 
   }
 
   getMmebers(id: string) {
+    this.loading.set(true)
     this._ProjectMembersService.getMembers(id).subscribe({
       next: (res) => {
         console.log("_ProjectMembersService", res);
         this.memberData = res;
+        this.loading.set(false)
+
 
       },
       error: (err) => {
         console.log(err);
+        this.loading.set(false)
+
 
       }
     })
 
   }
 
-   getname(name?: string) {
+  getname(name?: string) {
     if (!name) return "";
     return name.trim()
       .split(' ')

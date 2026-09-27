@@ -19,12 +19,15 @@ export class Login {
 
   }
   apiError: string = "";
+  showpass: boolean = false;
   loginModel = signal<LoginModule>({
     email: '',
     password: '',
     rememberMe: false,
   })
-
+  togglePass() {
+  return this.showpass = !this.showpass
+}
   loginForm = form(this.loginModel, (fields) => {
     required(fields.email, { message: "email is required" });
     email(fields.email, { message: "please enter a vaild email" });

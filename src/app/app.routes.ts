@@ -12,6 +12,7 @@ import { guestGuard } from './core/guards/guest-guard';
 import { ProjectDetails } from './features/projects/project-details/project-details';
 import { ProjectEdit } from './features/projects/project-edit/project-edit';
 import { ForgotPassword } from './features/auth/pages/forgot-password/forgot-password';
+import { ProjectMembers } from './features/projects/project-members/project-members';
 
 export const routes: Routes = [
   {
@@ -43,7 +44,7 @@ export const routes: Routes = [
       { path: 'projects/add-project', component: AddProjects, canActivate: [authGuard] },
       { path: 'project/:id/epics', component: ProjectDetails, canActivate: [authGuard] },
       { path: 'project/:id/tasks', component: ProjectDetails, canActivate: [authGuard] },
-      { path: 'project/:id/members', component: ProjectDetails, canActivate: [authGuard] },
+      { path: 'project/:id/members', component: ProjectMembers, canActivate: [authGuard] },
       { path: 'project/:id/details', component: ProjectEdit, canActivate: [authGuard] },
       { path: 'project/:id/edit', component: ProjectEdit, canActivate: [authGuard] },
 

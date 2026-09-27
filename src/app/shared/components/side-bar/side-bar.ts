@@ -3,7 +3,8 @@ import { Component, inject } from '@angular/core';
 import {
   NavigationEnd,
   Router,
-  RouterLink
+  RouterLink,
+  RouterLinkActive
 } from '@angular/router';
 
 import { filter, map, startWith } from 'rxjs';
@@ -13,7 +14,7 @@ import { ToastService } from '../../services/toast';
 import { ProjectId } from '../../../features/projects/services/project-id';
 
 @Component({
-  imports: [RouterLink, AsyncPipe],
+  imports: [RouterLink, AsyncPipe,RouterLinkActive],
   selector: 'app-side-bar',
   styleUrl: './side-bar.scss',
   templateUrl: './side-bar.html',

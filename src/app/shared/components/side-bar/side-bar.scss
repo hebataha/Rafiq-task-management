@@ -14,6 +14,7 @@ aside {
 
             li {
 
+                .active,
                 &:hover {
                     transition: all 0.3ss ease-in-out;
                     background-color: var(--color-white);
@@ -211,4 +212,9 @@ aside {
         justify-content: center;
         align-items: center;
     }
+}
+
+.active {
+    background-color: var(--color-surface-low);
+    transform: translateY(-3px);
 }

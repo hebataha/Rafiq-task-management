@@ -46,29 +46,29 @@
                                 [src]="isExpanded ?'assets/images/icons/top-arrow.svg' :'assets/images/icons/down-arrow.svg'" />
 
                         </div>
-                        
+
 
                     </a>
                     @if(isExpanded
                     && _ProjectId.id()){
                     <div class="nav-list_dropdown__item--submenu flex flex-col gap-3 bg-white">
 
-                        <a [routerLink]="['/project', _ProjectId.id(), 'epics']"
+                        <a [routerLink]="['/project', _ProjectId.id(), 'epics']" routerLinkActive="active"
                             class="topic flex gap-2 p-2 items-center">
                             <img src="assets/images/icons/epic.svg" />
                             <span>Epics</span>
                         </a>
-                        <a [routerLink]="['/project', _ProjectId.id(), 'tasks']"
+                        <a [routerLink]="['/project', _ProjectId.id(), 'tasks']" routerLinkActive="active"
                             class="topic flex gap-2 p-2 items-center">
                             <img src="assets/images/icons/tasks.svg" />
                             <span>tasks</span>
                         </a>
-                        <a [routerLink]="['/project', _ProjectId.id(), 'members']"
+                        <a [routerLink]="['/project', _ProjectId.id(), 'members']" routerLinkActive="active"
                             class="topic flex gap-2 p-2 items-center">
                             <img src="assets/images/icons/members.svg" />
                             <span>Members</span>
                         </a>
-                        <a [routerLink]="['/project', _ProjectId.id(), 'edit']"
+                        <a [routerLink]="['/project', _ProjectId.id(), 'edit']" routerLinkActive="active"
                             class="topic flex gap-2 p-2 items-center">
                             <img src="assets/images/icons/details.svg" />
                             <span>Details</span>

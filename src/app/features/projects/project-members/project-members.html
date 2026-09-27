@@ -1,8 +1,12 @@
 @if (loading()) {
 <app-project-members-loader></app-project-members-loader>
-}
-<!-- Members Card -->
-@if(memberData){
+}@else if(errorApi()){
+<app-project-members-error></app-project-members-error>
+
+}@else{
+
+
+
 <div class="min-h-screen bg-slate-50 px-6 py-5">
 
     <app-breadcrumb category="PROJECTS" PageName="PR0JECT NAME" subName="MEMBERS"></app-breadcrumb>
@@ -69,4 +73,8 @@
 
     </div>
 </div>
+
 }
+<!-- Members Card -->
+
+

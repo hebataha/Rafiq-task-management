@@ -1,26 +1,15 @@
-<div class="mb-2 flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.08em]">
+<div class="mb-2 flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.08em] mb-10 ">
 
-  <span class="text-slate-400">
-    {{ category }}
-  </span>
-
-        <img src="assets/images/icons/breadcrumb-arrow.svg"/>
-
-  <span
-    [class.text-[#2563EB]]="!subName"
-    [class.text-slate-400]="subName"
-  >
-    {{ PageName }}
-  </span>
-
-  @if (subName) {
-    <span class="text-slate-400">
-        <img src="assets/images/icons/breadcrumb-arrow.svg"/>
+    @for (item of items; track $index ; let last = $last) {
+    <span [class.text-primary]="last" [class.text-slate-400]="!last">
+        {{ item }}
     </span>
+    @if(!last){
+    <img src="assets/images/icons/breadcrumb-arrow.svg" />
 
-    <span class="text-[#2563EB]">
-      {{ subName }}
-    </span>
-  }
+    }
+
+    }
+
 
 </div>

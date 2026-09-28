@@ -7,8 +7,6 @@ import { Component, Input } from '@angular/core';
   templateUrl: './breadcrumb.html',
 })
 export class Breadcrumb {
-  @Input() category = ""
-  @Input() PageName = ""
-  @Input() subName = ""
+  @Input() items:string[] = []
 
 }

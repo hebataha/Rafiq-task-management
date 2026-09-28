@@ -1,7 +1,7 @@
 <div class="min-h-screen bg-[#f8f9fd] px-6 py-8">
 
   <!-- Breadcrumb -->
- <app-breadcrumb   [items]="['PROJECTS', 'PROJECT ALPHA', 'MEMBERS' ,'New Epic']"> </app-breadcrumb>
+  <app-breadcrumb [items]="['PROJECTS', 'PROJECT ALPHA', 'MEMBERS' ,'New Epic']"> </app-breadcrumb>
 
   <!-- Page title -->
   <div class="mb-8">
@@ -28,21 +28,21 @@
         </label>
 
         <div>
-          <input
-            type="text"
-            placeholder="e.g. Structural Foundation Phase"
-            class="h-11 w-full rounded-sm border border-transparent
+          <!-- {{epicForm.title }} -->
+          <input type="text" placeholder="e.g. Structural Foundation Phase" class="h-11 w-full rounded-sm border border-transparent
                    bg-blue-100/70 px-4 text-sm text-slate-700
                    outline-none transition
                    placeholder:text-slate-400
-                   focus:border-blue-500 focus:bg-white"
-          />
+                   focus:border-blue-500 focus:bg-white" [formField]="epicForm.title" />
 
           <!-- Validation -->
+       @if (epicForm.title().touched() && epicForm.title().errors().length) {
           <p class="mt-2 flex items-center gap-1 text-[10px] font-medium uppercase text-red-500">
             <span>⊗</span>
             Title is required (minimum 3 characters)
           </p>
+          }
+
         </div>
 
       </div>
@@ -61,18 +61,14 @@
         </div>
 
         <div>
-          <textarea
-            rows="5"
-            placeholder="Describe the scope and objectives of this epic..."
-            class="w-full resize-none rounded-sm border border-transparent
+          <textarea rows="5" placeholder="Describe the scope and objectives of this epic..." class="w-full resize-none rounded-sm border border-transparent
                    bg-blue-100/70 px-4 py-3 text-sm text-slate-700
                    outline-none transition
                    placeholder:text-slate-400
-                   focus:border-blue-500 focus:bg-white"
-          ></textarea>
+                   focus:border-blue-500 focus:bg-white" [formField]="epicForm.discription"></textarea>
 
           <div class="mt-1 text-right text-[10px] text-slate-400">
-            0 / 500 characters
+            {{epicForm.discription().value().length}} / 500 characters
           </div>
         </div>
 
@@ -81,7 +77,9 @@
       <!-- Assignee + Deadline -->
       <div class="grid grid-cols-[180px_1fr] gap-8">
 
-        <div></div>
+        <div>
+
+        </div>
 
         <div class="grid grid-cols-2 gap-8">
 
@@ -91,12 +89,10 @@
               Assignee
             </label>
 
-            <select
-              class="h-11 w-full rounded-sm border border-transparent
+            <select class="h-11 w-full rounded-sm border border-transparent
                      bg-blue-100/70 px-4 text-sm text-slate-700
                      outline-none transition
-                     focus:border-blue-500 focus:bg-white"
-            >
+                     focus:border-blue-500 focus:bg-white" [formField]="epicForm.assign">
               <option selected disabled>
                 Select a member...
               </option>
@@ -117,37 +113,28 @@
               Deadline
             </label>
 
-            <input
-              type="date"
-              class="h-11 w-full rounded-sm border border-transparent
+            <input type="date" class="h-11 w-full rounded-sm border border-transparent
                      bg-blue-100/70 px-4 text-sm text-slate-700
                      outline-none transition
-                     focus:border-blue-500 focus:bg-white"
-            />
+                     focus:border-blue-500 focus:bg-white" [formField]="epicForm.deadline" />
           </div>
 
         </div>
       </div>
 
       <!-- Actions -->
-      <div class="flex justify-end gap-7 pt-4">
+      <div class="flex justify-end gap-3 pt-4">
 
-        <button
-          type="button"
-          class="px-3 py-2 text-sm font-medium text-slate-600
-                 transition hover:text-slate-900"
-        >
+        <button type="button" class="px-3 py-2 text-sm font-medium text-slate-600
+                 transition  cursor-pointer bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
           Cancel
         </button>
 
-        <button
-          type="submit"
-          class="rounded-sm bg-blue-600 px-8 py-2.5
+        <button type="submit" class="rounded-sm bg-blue-600 px-8 py-2.5
                  text-sm font-medium text-white shadow-sm
                  transition hover:bg-blue-700
                  focus:outline-none focus:ring-2
-                 focus:ring-blue-500 focus:ring-offset-2"
-        >
+                 focus:ring-blue-500 focus:ring-offset-2">
           Create Epic
         </button>
 

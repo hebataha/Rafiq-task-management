@@ -3,7 +3,7 @@ import { Breadcrumb } from '../../../shared/components/breadcrumb/breadcrumb';
 import { form, FormField, maxLength, minLength, required, validate } from '@angular/forms/signals';
 import { ProjectCreateEpicService } from '../services/project-create-epic-service';
 import { ProjectMembersService } from '../services/project-members-service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastService } from '../../../shared/services/toast';
 
 @Component({
@@ -17,12 +17,14 @@ export class ProjectCreateEpic {
   _ProjectCreateEpicService = inject(ProjectCreateEpicService);
   _ProjectMembersService = inject(ProjectMembersService)
   _ActivatedRoute = inject(ActivatedRoute);
-  _ToastService = inject(ToastService)
+  _ToastService = inject(ToastService);
+  _Router = inject(Router)
   loading = signal(false);
   errorApi = signal(false);
   memberData: any = [];
   projectId: string = "";
   selectedId: string | null = null;
+  loadingEpic = signal(false)
 
   ngOnInit(): void {
     this.projectId = this._ActivatedRoute.snapshot.paramMap.get('id')!;
@@ -94,7 +96,10 @@ export class ProjectCreateEpic {
     console.log("iddddddddddddddddddddddddddd", this.selectedId);
 
   }
+
   getEpic() {
+    this.loadingEpic.set(true)
+
     const title = this.epicCreate().title.trim();
     const description = this.epicCreate().description;
     const assignee_id = this.selectedId;
@@ -115,6 +120,7 @@ export class ProjectCreateEpic {
     this._ProjectCreateEpicService.createEpicCation(title, description, assignee_id, this.projectId, deadline).subscribe({
       next: (res: any) => {
         console.log('Epic created:', res);
+        this.loadingEpic.set(false)
         this._ToastService.show(
           'Epic created successfully',
           "success"
@@ -122,14 +128,19 @@ export class ProjectCreateEpic {
       },
       error: (err: any) => {
         console.log('Create epic error:', err);
+        this.loadingEpic.set(false)
+
         this._ToastService.show(
-          'error created Epic',
+          `${err.message}`,
           "error"
         );
 
 
       }
     })
+  }
+  cancel() {
+    this._Router.navigate([`/project/${this.projectId}/epics`])
   }
 
 }

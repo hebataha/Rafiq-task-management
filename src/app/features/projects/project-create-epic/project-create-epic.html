@@ -188,17 +188,28 @@
       <div class="flex justify-end gap-3 pt-4">
 
         <button type="button" class="px-3 py-2 text-sm font-medium text-slate-600
-                 transition  cursor-pointer bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                 transition  cursor-pointer bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" (click)="cancel()">
           Cancel
         </button>
 
-        <button type="button" [disabled]="epicForm().invalid()"
-          class="rounded-sm bg-blue-600 px-8 py-2.5
+        <button type="button" [disabled]="epicForm().invalid() || !epicCreate().title.trim()"
+          class="rounded-sm bg-blue-600 px-8 py-2.5 flex justify-center
                  text-sm font-medium text-white shadow-sm
                  transition hover:bg-blue-700
-                 focus:outline-none focus:ring-2
+                 focus:outline-none focus:ring-2 w-40
                  focus:ring-blue-500 focus:ring-offset-2 disabled:bg-gray-300 disabled:text-gray-500 disabled:cursor-not-allowed" (click)="getEpic()">
+          @if(loadingEpic()){
+          <svg aria-hidden="true" class="w-8 h-8 text-neutral-tertiary animate-spin fill-brand " viewBox="0 0 100 101"
+            fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50 91.5094C27.4013 91.5094 9.08144 73.1895 9.08144 50.5908Z"
+              fill="#fff" />
+          </svg>
+          }@else{
           Create Epic
+          }
+
+
         </button>
 
       </div>

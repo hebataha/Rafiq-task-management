@@ -186,10 +186,10 @@
             </div>
 
             <!-- Button --> 
-            <button type="submit" class="w-full h-11 rounded flex justify-center items-center
+            <button type="submit"   [disabled]="registerForm().invalid()" class="w-full h-11 rounded flex justify-center items-center
                bg-[#0865c8]
                text-white text-sm font-medium
-               transition" type="button" [disabled]="registerForm().invalid()" (click)="signUp()">
+               transition" type="button" (click)="signUp()">
                 @if(loading){
                 <svg aria-hidden="true" class="w-8 h-8 text-neutral-tertiary animate-spin fill-brand"
                     viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">

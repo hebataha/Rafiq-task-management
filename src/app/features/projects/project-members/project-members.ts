@@ -27,6 +27,7 @@ export class ProjectMembers implements OnInit {
     }
 
 
+    console.log("member epic ID", id);
 
   }
 

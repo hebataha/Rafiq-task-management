@@ -5,7 +5,7 @@
             text-align: end;
             display:flex;
             justify-content: center;
-            align-items: center;
+            flex-direction: column;
             &--name {
                 font-size: 14px;
                 color: var(----color-slate-100);

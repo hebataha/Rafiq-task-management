@@ -20,21 +20,7 @@
     </button>
     }
   </div>
-  <button type="button" (click)="getPaginationData()"
-    class="rounded-[2px] bg-[#0b63ce] px-5 py-2.5 text-[14px] font-medium text-white shadow-sm transition hover:bg-[#0958b8]">
-    @if(loading()){
-    <svg aria-hidden="true" class="w-8 h-8 text-neutral-tertiary animate-spin fill-brand " viewBox="0 0 100 101"
-      fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path
-        d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50 91.5094C27.4013 91.5094 9.08144 73.1895 9.08144 50.5908Z"
-        fill="#fff" />
-    </svg>
-    }@else{
-    Pagination
 
-    }
-
-  </button>
   <!-- Projects Grid -->
   @if (loading()) {
   <div class="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3" role="status" aria-label="Loading projects">
@@ -49,7 +35,7 @@
   </div>
   } @else {
   <div class="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
-    <h1>{{dataResult().length}}</h1>
+    <!-- <h1>{{dataResult().length}}</h1> -->
     @for (item of dataResult(); track $index) {
     <!-- Project Card -->
     <div
@@ -135,8 +121,8 @@
 
     <div class="flex items-center gap-1 text-[10px]">
 
-      <button
-        class="flex h-7 w-7 items-center justify-center rounded-[2px] border border-[#edf0f3] bg-white text-[#a2a9b3]">
+      <button (click)="prevPage()" [disabled]="currentPage === 1"
+        class="cursor-pointer flex h-7 w-7 items-center justify-center rounded-[2px] border border-[#edf0f3] bg-white text-[#a2a9b3] disabled:cursor-not-allowed disabled:opacity-40">
         ‹
       </button>
       @for (page of pages; track $index) {
@@ -152,10 +138,12 @@
 
 
 
-      <button
-        class="flex h-7 w-7 items-center justify-center rounded-[2px] border border-[#edf0f3] bg-white text-[#7b8492]">
+      <button (click)="nextPage()" [disabled]="currentPage === totalPages"
+        class="cursor-pointer flex h-7 w-7 items-center justify-center rounded-[2px] border border-[#edf0f3] bg-white text-[#7b8492] disabled:cursor-not-allowed disabled:opacity-40">
         ›
       </button>
+
+
 
     </div>
 

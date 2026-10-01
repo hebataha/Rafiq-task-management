@@ -46,6 +46,17 @@ export class Projects implements OnInit {
     this.getPaginationData();
 
   }
+  prevPage() {
+    if (this.currentPage > 1) {
+      this.changePage(this.currentPage - 1);
+    }
+  }
+
+  nextPage() {
+    if (this.currentPage < this.totalPages) {
+      this.changePage(this.currentPage + 1);
+    }
+  }
   getAllProjects() {
     this.loading.set(true);
     this.ProjectService.getProjects().subscribe({

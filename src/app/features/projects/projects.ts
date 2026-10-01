@@ -1,5 +1,5 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ProjectService } from './services/project-service';
 import { AddProjectsModules } from './modules/add-projects';
 import { DatePipe } from '@angular/common';
@@ -17,11 +17,12 @@ export class Projects implements OnInit {
   _ProjectPagination = inject(ProjectPagination)
   router = inject(Router);
   ProjectId = inject(ProjectId)
+  _ActivatedRoute = inject(ActivatedRoute)
   dataResult = signal<AddProjectsModules[]>([]);
   loading = signal(true);
   limit: number = 10;
   currentPage = 1;
-  offset = (this.currentPage - 1) * this.limit;
+  offset = 0;
   contentRange: string | null = null;
   totalCount = 0;
   totalPages: number = 0;
@@ -33,7 +34,17 @@ export class Projects implements OnInit {
   }
   changePage(page: number) {
     this.currentPage = page;
-    this.offset = (this.currentPage - 1) * this.limit;
+
+    console.log(page);
+    this.offset = (page - 1) * this.limit;
+
+    console.log('page:', page);
+    console.log('offset:', this.offset);
+    this.router.navigate([], {
+      queryParams: { page }
+    });
+    this.getPaginationData();
+
   }
   getAllProjects() {
     this.loading.set(true);

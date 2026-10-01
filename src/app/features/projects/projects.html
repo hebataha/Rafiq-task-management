@@ -140,8 +140,9 @@
         ‹
       </button>
       @for (page of pages; track $index) {
-      <button class="flex h-7 w-7 items-center justify-center rounded-[2px] bg-[#0b63ce] font-medium text-white">
-       {{page}}
+      <button (click)="changePage(page)" [class.active]="currentPage === page"
+        class="cursor-pointer  flex h-7 w-7 items-center justify-center rounded-[2px] bg-[#edf0f3] font-medium text-priamry">
+        {{page}}
       </button>
       }
 
@@ -149,7 +150,7 @@
         ...
       </span>
 
-   
+
 
       <button
         class="flex h-7 w-7 items-center justify-center rounded-[2px] border border-[#edf0f3] bg-white text-[#7b8492]">

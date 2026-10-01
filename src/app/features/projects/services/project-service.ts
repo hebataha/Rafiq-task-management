@@ -16,6 +16,6 @@ export class ProjectService {
 
 
     getProjects() {
-        return this.http.get(this.apiUrl + '/rest/v1/projects');
+        return this.http.get(this.apiUrl + '/rest/v1/rpc/get_projects');
     }
 }

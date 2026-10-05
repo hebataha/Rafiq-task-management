@@ -6,6 +6,12 @@ body {
   font-size: 1rem;
 }
 
+header {
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+}
+
 @theme {
   /* Colors */
   --color-primary: #003d9b;

@@ -7,9 +7,10 @@ import { ProjectEpicLoader } from './project-epic-loader/project-epic-loader';
 import { ProjectEpicError } from './project-epic-error/project-epic-error';
 import { ProjectEpicEmpty } from './project-epic-empty/project-epic-empty';
 import { DatePipe } from '@angular/common';
+import { ProjectEpicDetails } from '../project-epic-details/project-epic-details';
 
 @Component({
-  imports: [Breadcrumb, RouterLink, ProjectEpicLoader, ProjectEpicError, ProjectEpicEmpty ,DatePipe],
+  imports: [Breadcrumb, RouterLink, ProjectEpicLoader, ProjectEpicError, ProjectEpicEmpty, DatePipe, ProjectEpicDetails],
   selector: 'app-project-epic',
   styleUrl: './project-epic.css',
   templateUrl: './project-epic.html',

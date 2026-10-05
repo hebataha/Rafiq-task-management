@@ -1,0 +1,28 @@
+<div class="flex min-h-[420px] flex-col items-center justify-center bg-[#fbfbff] px-4 text-center">
+
+    <!-- Icon Box -->
+     <div class="image-wrapper">
+
+    <img src="assets/images/icons/empty-epic.svg" />
+     </div>
+    <!-- Title -->
+    <h2 class="text-[16px] font-semibold text-[#12233f]">
+        No epics in this project yet.
+    </h2>
+
+    <!-- Description -->
+    <p class="mt-4 max-w-[330px] text-[11px] leading-5 text-[#6f7785]">
+        Break down your large project into manageable
+        epics to track progress better and maintain
+        architectural clarity.
+    </p>
+
+    <!-- Button -->
+    <button [routerLink]="['/project', projectId, 'epics', 'new']"
+        class="mt-5 flex items-center gap-2 rounded-[3px] bg-[#0667c9] px-5 py-2.5 text-[11px] font-medium text-white shadow-[0_6px_14px_rgba(6,103,201,0.28)] transition hover:bg-[#055db6]">
+        <img src="assets/images/icons/roket.svg" />
+
+        <span>Create First Epic</span>
+    </button>
+
+</div>

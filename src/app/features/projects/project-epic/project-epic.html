@@ -1,3 +1,17 @@
+@if (loading()) {
+
+<app-project-epic-loader></app-project-epic-loader>
+
+} @else if (error()) {
+
+<app-project-epic-error></app-project-epic-error>
+
+} 
+@else if(epicsData.length ===0 ){
+   <app-project-epic-empty></app-project-epic-empty>
+}
+@else {
+
 <div class="min-h-screen bg-[#f7f9fc] px-6 py-5">
 
     <!-- Breadcrumb -->
@@ -31,11 +45,9 @@
 
     <!-- Epics Grid -->
     <div class="grid grid-cols-1 gap-5 md:grid-cols-2">
-
-
+        @for (epic of epicsData; track $index) {
         <div class="relative rounded-[3px] border border-[#edf0f5] bg-white
                px-5 py-4 shadow-[0_2px_10px_rgba(15,23,42,0.03)]">
-
             <!-- Left Blue Border -->
             <div class="absolute left-0 top-0 h-full w-[3px] rounded-l-[3px] bg-[#0866c6]">
             </div>
@@ -43,10 +55,13 @@
             <!-- Epic Code -->
             <span class="inline-flex rounded-[2px] bg-[#e9f1ff] px-2 py-1
                  text-[9px] font-semibold text-[#2c67b3]">
+                {{epic.epic_id}}
+
             </span>
 
             <!-- Title -->
             <h2 class="mt-3 text-[15px] font-semibold text-[#182840]">
+                {{epic.title}}
             </h2>
 
             <!-- Assignee -->
@@ -54,7 +69,7 @@
 
                 <div class="flex h-8 w-8 items-center justify-center rounded-full
                    bg-[#0568c8] text-[10px] font-semibold text-white">
-                    AM
+                    {{getname(epic.assignee.name)}}
                 </div>
 
                 <div>
@@ -63,6 +78,7 @@
                     </p>
 
                     <p class="text-[10px] font-medium text-[#27364d]">
+                        {{epic.assignee.name}}
                     </p>
                 </div>
 
@@ -75,23 +91,35 @@
             <div class="flex items-center justify-between text-[9px] text-[#8994a4]">
 
                 <div class="flex items-center gap-1">
-                    <span>♧</span>
+                    <span>
+                        <img src="assets/images/icons/user.svg" />
+                    </span>
                     <span>
                         Created by:
                         <span class="text-[#5b6676]">
+                            {{epic.created_by.name}}
                         </span>
                     </span>
                 </div>
 
                 <div class="flex items-center gap-1">
-                    <span>▢</span>
+                    <span>
+                     <img src="assets/images/icons/icon.svg" />
+                    </span>
+                    <span>{{epic.created_at | date:'dd MMM yyyy' }}</span>
                 </div>
 
             </div>
 
         </div>
+        }
+
+
 
 
     </div>
 
 </div>
+
+}
+

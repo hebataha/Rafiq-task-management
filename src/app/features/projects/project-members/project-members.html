@@ -7,18 +7,18 @@
 
 
 
-<div class="min-h-screen bg-slate-50 px-6 py-5">
+<div class="min-h-screen bg-[#f8f9fd] px-5 py-6 sm:px-8 lg:px-10">
 
     <app-breadcrumb category="PROJECTS" PageName="PR0JECT NAME" subName="MEMBERS"></app-breadcrumb>
 
     <!-- Header -->
-    <div class="mb-10 flex items-center justify-between">
-        <h1 class="text-3xl font-bold text-slate-900">
+    <div class="mb-7 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <h1 class="text-[24px] font-semibold text-[#172033]">
             Project Members
         </h1>
 
         <button
-            class="flex items-center gap-2 rounded-md bg-blue-600 px-4 py-2.5 text-sm font-medium text-white shadow-sm transition hover:bg-blue-700">
+            class="flex h-10 items-center gap-2 rounded-[4px] bg-[#0866c6] px-5 text-[13px] font-semibold text-white shadow-sm transition hover:bg-[#075caf]">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
                 stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -28,42 +28,42 @@
             Invite Member
         </button>
     </div>
-    <div class="mx-auto max-w-3xl overflow-hidden rounded-lg border-surface-low bg-white shadow-sm">
+    <div class="mx-auto w-full max-w-3xl overflow-hidden rounded-[4px] border border-[#edf0f5] bg-white shadow-[0_1px_4px_rgba(15,23,42,0.04)]">
 
         <!-- Table Header -->
-        <div class="grid grid-cols-[1fr_180px] bg-slate-50 px-6 py-4">
+        <div class="grid grid-cols-[minmax(0,1fr)_100px] bg-[#f8f9fc] px-4 py-4 sm:grid-cols-[minmax(0,1fr)_140px] sm:px-6">
 
-            <span class="text-xs font-semibold uppercase tracking-wide text-blue font-bold">
+            <span class="text-[11px] font-semibold uppercase tracking-wide text-[#52627b]">
                 Member
             </span>
 
-            <span class="text-xs font-semibold uppercase tracking-wide text-blue font-bold">
+            <span class="text-[11px] font-semibold uppercase tracking-wide text-[#52627b]">
                 Role
             </span>
         </div>
 
         <!-- Row -->
-        <div class="grid grid-cols-[1fr_180px] items-center  border-surface-low px-6 py-4">
+        <div class="grid grid-cols-[minmax(0,1fr)_100px] items-center border-t border-[#f0f2f5] px-4 py-4 sm:grid-cols-[minmax(0,1fr)_140px] sm:px-6">
             @for (member of memberData; track $index) {
-            <div class="flex items-center gap-4">
+            <div class="flex min-w-0 items-center gap-3 sm:gap-4">
                 <div
-                    class="flex h-10 w-10 items-center justify-center rounded-md bg-blue-100 text-sm font-semibold text-blue-700">
+                    class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#e9efff] text-[13px] font-semibold text-[#0866c6]">
                     {{getname(member.metadata.name)}}
                 </div>
 
                 <div>
-                    <p class="text-sm font-semibold text-slate-900">
+                    <p class="truncate text-[13px] font-semibold text-[#182840]">
                         {{member.metadata.name}}
                     </p>
 
-                    <p class="text-xs text-slate-400">
+                    <p class="truncate text-[11px] text-[#8c97a8]">
                         {{member.metadata.email}}
                     </p>
                 </div>
             </div>
 
             <div>
-                <span class="rounded-full bg-blue-600 px-3 py-1 text-[10px] font-semibold uppercase text-white"
+                <span class="role-badge rounded-full px-3 py-1 text-[10px] font-semibold uppercase"
                     [ngClass]="member.role">
                     {{member.role}}
                 </span>
@@ -76,5 +76,4 @@
 
 }
 <!-- Members Card -->
-
 

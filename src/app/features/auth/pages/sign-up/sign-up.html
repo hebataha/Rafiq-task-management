@@ -1,14 +1,14 @@
-<div class="min-h-screen bg-[#f8f8ff] flex items-center justify-center px-4 py-10">
+<div class="flex min-h-screen items-center justify-center bg-[#f8f9fd] px-4 py-8">
 
-    <div class="w-full max-w-[500px] bg-white rounded-md shadow-sm px-10 py-10">
+    <div class="w-full max-w-[500px] rounded-[6px] border border-[#edf0f5] bg-white px-6 py-8 shadow-[0_8px_28px_rgba(15,23,42,0.06)] sm:px-10 sm:py-10">
 
         <!-- Header -->
-        <div class="text-center mb-8">
-            <h1 class="text-[26px] font-bold text-slate-900">
+        <div class="mb-8 text-center">
+            <h1 class="text-[26px] font-semibold text-[#172033]">
                 Create your workspace
             </h1>
 
-            <p class="text-sm text-slate-400 mt-1">
+            <p class="mt-1 text-[13px] text-[#6f7785]">
                 Join the editorial approach to task management.
             </p>
         </div>
@@ -17,19 +17,17 @@
 
             <!-- Name -->
             <div>
-                <label for="name" class="block text-[11px] font-semibold uppercase text-slate-600 mb-2">
+                <label for="name" class="mb-2 block text-[11px] font-semibold uppercase text-[#4b5565]">
                     Name
                 </label>
 
-                <input id="name" type="text" placeholder="Enter your full name" class="w-full h-11 px-4 rounded bg-[#e8efff]
-                 text-sm text-slate-700 placeholder:text-slate-400
-                 border border-transparent
+                <input id="name" type="text" placeholder="Enter your full name" class="h-11 w-full rounded-[4px] border border-[#dce5f4] bg-[#eaf1ff] px-4
+                 text-[13px] text-[#344054] placeholder:text-[#94a0b2]
                  outline-none
-                 focus:border-blue-500
-                 focus:ring-2 focus:ring-blue-100
+                 focus:border-[#8aaddd] focus:bg-white
                  transition" [formField]="registerForm.name" />
 
-                <p class="text-[10px] text-slate-300 mt-1">
+                <p class="mt-1 text-[11px] text-[#98a1af]">
                     5-50 characters, letters only.
                 </p>
                 @if(registerForm.name().touched() && registerForm.name().errors() ){
@@ -44,16 +42,14 @@
 
             <!-- Email -->
             <div>
-                <label for="email" class="block text-[11px] font-semibold uppercase text-slate-600 mb-2">
+                <label for="email" class="mb-2 block text-[11px] font-semibold uppercase text-[#4b5565]">
                     Email
                 </label>
 
-                <input id="email" type="email" placeholder="yourname@company.com" class="w-full h-11 px-4 rounded bg-[#e8efff]
-                 text-sm text-slate-700 placeholder:text-slate-400
-                 border border-transparent
+                <input id="email" type="email" placeholder="yourname@company.com" class="h-11 w-full rounded-[4px] border border-[#dce5f4] bg-[#eaf1ff] px-4
+                 text-[13px] text-[#344054] placeholder:text-[#94a0b2]
                  outline-none
-                 focus:border-blue-500
-                 focus:ring-2 focus:ring-blue-100
+                 focus:border-[#8aaddd] focus:bg-white
                  transition" [formField]="registerForm.email" />
             </div>
             @if(registerForm.email().touched() && registerForm.email().errors() ){
@@ -64,17 +60,15 @@
             }
             <!-- Job Title -->
             <div>
-                <label for="jobTitle" class="block text-[11px] font-semibold uppercase text-slate-600 mb-2">
+                <label for="jobTitle" class="mb-2 block text-[11px] font-semibold uppercase text-[#4b5565]">
                     Job Title
                     <span class="text-slate-400 font-normal">(Optional)</span>
                 </label>
 
-                <input id="jobTitle" type="text" placeholder="e.g. Project Manager" class="w-full h-11 px-4 rounded bg-[#e8efff]
-                 text-sm text-slate-700 placeholder:text-slate-400
-                 border border-transparent
+                <input id="jobTitle" type="text" placeholder="e.g. Project Manager" class="h-11 w-full rounded-[4px] border border-[#dce5f4] bg-[#eaf1ff] px-4
+                 text-[13px] text-[#344054] placeholder:text-[#94a0b2]
                  outline-none
-                 focus:border-blue-500
-                 focus:ring-2 focus:ring-blue-100
+                 focus:border-[#8aaddd] focus:bg-white
                  transition" [formField]="registerForm.jobTitle" />
             </div>
 
@@ -83,17 +77,15 @@
 
                 <!-- Password -->
                 <div>
-                    <label for="password" class="block text-[11px] font-semibold uppercase text-slate-600 mb-2">
+                    <label for="password" class="mb-2 block text-[11px] font-semibold uppercase text-[#4b5565]">
                         Password
                     </label>
 
                     <div class="relative">
-                        <input id="password" [type]="showPass ? `text` : `password`" placeholder="Password" class="w-full h-11 px-4 pr-11 rounded bg-[#e8efff]
-                     text-sm text-slate-700 placeholder:text-slate-400
-                     border border-transparent
+                        <input id="password" [type]="showPass ? `text` : `password`" placeholder="Password" class="h-11 w-full rounded-[4px] border border-[#dce5f4] bg-[#eaf1ff] px-4 pr-11
+                     text-[13px] text-[#344054] placeholder:text-[#94a0b2]
                      outline-none
-                     focus:border-blue-500
-                     focus:ring-2 focus:ring-blue-100
+                     focus:border-[#8aaddd] focus:bg-white
                      transition" [formField]="registerForm.password" />
 
                         <button type="button" class="absolute right-3 top-1/2 -translate-y-1/2
@@ -112,16 +104,14 @@
 
                 <!-- Confirm -->
                 <div>
-                    <label for="confirmPassword" class="block text-[11px] font-semibold uppercase text-slate-600 mb-2">
+                    <label for="confirmPassword" class="mb-2 block text-[11px] font-semibold uppercase text-[#4b5565]">
                         Confirm Password
                     </label>
 
-                    <input id="confirmPassword" type="password" placeholder="Repeat your password" class="w-full h-11 px-4 rounded bg-[#e8efff]
-                   text-sm text-slate-700 placeholder:text-slate-400
-                   border border-transparent
+                    <input id="confirmPassword" type="password" placeholder="Repeat your password" class="h-11 w-full rounded-[4px] border border-[#dce5f4] bg-[#eaf1ff] px-4
+                   text-[13px] text-[#344054] placeholder:text-[#94a0b2]
                    outline-none
-                   focus:border-blue-500
-                   focus:ring-2 focus:ring-blue-100
+                   focus:border-[#8aaddd] focus:bg-white
                    transition" [formField]="registerForm.confirmPassword" />
                 </div>
 
@@ -139,7 +129,7 @@
 
 
             <!-- Password requirements -->
-            <div class="bg-[#edf2ff] rounded-md px-4 py-3 space-y-1">
+            <div class="space-y-1 rounded-[4px] border border-[#e5ebf5] bg-[#f8f9fc] px-4 py-3">
                 <p class="flex items-center gap-2 text-[11px] text-slate-500">
                     @if (registerForm.password().touched()) {
 
@@ -186,10 +176,8 @@
             </div>
 
             <!-- Button --> 
-            <button type="submit"   [disabled]="registerForm().invalid()" class="w-full h-11 rounded flex justify-center items-center
-               bg-[#0865c8]
-               text-white text-sm font-medium
-               transition" type="button" (click)="signUp()">
+            <button type="submit" [disabled]="registerForm().invalid()" class="flex h-11 w-full cursor-pointer items-center justify-center rounded-[4px]
+               bg-[#0866c6] text-[13px] font-semibold text-white transition hover:bg-[#075caf] disabled:cursor-not-allowed disabled:opacity-60" type="button" (click)="signUp()">
                 @if(loading){
                 <svg aria-hidden="true" class="w-8 h-8 text-neutral-tertiary animate-spin fill-brand"
                     viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -205,9 +193,9 @@
         </form>
 
         <!-- Login -->
-        <div class="text-center mt-8 text-xs text-slate-400">
+        <div class="mt-8 text-center text-[13px] text-[#7c8594]">
             Already have an account?
-            <a routerLink="/login" class="text-slate-700 font-medium hover:text-blue-600">
+            <a routerLink="/login" class="font-medium text-[#0866c6] hover:underline">
                 Log in
             </a>
         </div>

@@ -1,6 +1,8 @@
 aside {
     height: 100%;
     padding: 1rem;
+    background: #f3f5ff;
+    border-right: 1px solid #e8ecf5;
 
     .navigation-list {
 
@@ -16,8 +18,8 @@ aside {
 
                 .active,
                 &:hover {
-                    transition: all 0.3ss ease-in-out;
-                    background-color: var(--color-white);
+                    transition: all 0.2s ease-in-out;
+                    background-color: #fff;
                     color: var(--color-primary);
                     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
                     cursor: pointer;
@@ -52,7 +54,7 @@ aside {
         }
 
         .nav-list_dropdown {
-            border-top: 1px solid rgba(#000, .1);
+            border-top: 1px solid #e2e7f0;
             padding-top: 15px;
 
             &__item {
@@ -68,7 +70,7 @@ aside {
                     transition: all .3s ease-in-out;
 
                     &:hover {
-                        background-color: #d7e2ff;
+                        background-color: #e9efff;
                     }
 
                     .text {
@@ -108,12 +110,10 @@ aside {
                         text-transform: capitalize;
                         transition: all .3s ease-in-out;
                         border-radius: 4px;
-                        border-radius: 40px;
                         padding: 10px;
 
                         &:hover {
-                            background-color: var(--color-surface-low);
-                            transform: translateY(-3px);
+                            background-color: #f1f4ff;
                         }
 
                         img {
@@ -127,8 +127,8 @@ aside {
     }
 
     .navigation-actions {
-        border-top: 1px solid rgba(#C3C6D633, 20);
-        padding-top: 40px;
+        border-top: 1px solid #e2e7f0;
+        padding-top: 24px;
 
         &__list {
             &--item {
@@ -215,6 +215,5 @@ aside {
 }
 
 .active {
-    background-color: var(--color-surface-low);
-    transform: translateY(-3px);
+    background-color: #e9efff;
 }

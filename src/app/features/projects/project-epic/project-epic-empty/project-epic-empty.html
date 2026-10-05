@@ -1,17 +1,17 @@
-<div class="flex min-h-[420px] flex-col items-center justify-center bg-[#fbfbff] px-4 text-center">
+<div class="flex min-h-[min(68vh,640px)] flex-col items-center justify-center bg-white px-4 py-12 text-center">
 
     <!-- Icon Box -->
-     <div class="image-wrapper">
+    <div class="mb-6 flex h-20 w-20 items-center justify-center rounded-xl bg-[#e9efff] p-3">
 
-    <img src="assets/images/icons/empty-epic.svg" />
-     </div>
+        <img src="assets/images/icons/empty-epic.svg" class="h-full w-full object-contain" />
+    </div>
     <!-- Title -->
-    <h2 class="text-[16px] font-semibold text-[#12233f]">
+    <h2 class="text-[18px] font-semibold text-[#12233f]">
         No epics in this project yet.
     </h2>
 
     <!-- Description -->
-    <p class="mt-4 max-w-[330px] text-[11px] leading-5 text-[#6f7785]">
+    <p class="mt-3 max-w-[360px] text-[13px] leading-5 text-[#6f7785]">
         Break down your large project into manageable
         epics to track progress better and maintain
         architectural clarity.
@@ -19,8 +19,8 @@
 
     <!-- Button -->
     <button [routerLink]="['/project', projectId, 'epics', 'new']"
-        class="mt-5 flex items-center gap-2 rounded-[3px] bg-[#0667c9] px-5 py-2.5 text-[11px] font-medium text-white shadow-[0_6px_14px_rgba(6,103,201,0.28)] transition hover:bg-[#055db6]">
-        <img src="assets/images/icons/roket.svg" />
+        class="mt-6 flex items-center gap-2 rounded-[4px] bg-[#0866c6] px-5 py-3 text-[13px] font-semibold text-white shadow-[0_4px_12px_rgba(6,103,201,0.2)] transition hover:bg-[#075caf]">
+        <img src="assets/images/icons/roket.svg" class="h-4 w-4" />
 
         <span>Create First Epic</span>
     </button>

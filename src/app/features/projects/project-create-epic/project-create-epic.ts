@@ -125,6 +125,7 @@ export class ProjectCreateEpic {
           'Epic created successfully',
           "success"
         );
+        this._Router.navigate([`/project/${this.projectId}/epics`])
       },
       error: (err: any) => {
         console.log('Create epic error:', err);

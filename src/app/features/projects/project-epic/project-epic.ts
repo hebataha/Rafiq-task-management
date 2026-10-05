@@ -19,13 +19,22 @@ export class ProjectEpic implements OnInit {
   public _ProjectId = inject(ProjectId);
   _ProjectEpicList = inject(ProjectEpicList);
   private _ActivatedRoute = inject(ActivatedRoute);
+  showPop = false;
   epicsData: any[] = [];
   loading = signal(false)
-  error = signal(false) 
+  error = signal(false)
   projectId = this._ActivatedRoute.snapshot.paramMap.get('id');
 
   ngOnInit(): void {
     this.getEpics()
+  }
+
+
+  showFun() {
+    this.showPop = true;
+    console.log("cllllllllllllllllllllllll" ,this.showPop);
+  
+    
   }
 
   getEpics() {
@@ -34,7 +43,7 @@ export class ProjectEpic implements OnInit {
       next: (res: any) => {
         console.log(" getEpics()", res);
         this.epicsData = res;
-            this.loading.set(false)
+        this.loading.set(false)
 
 
       },
@@ -47,7 +56,7 @@ export class ProjectEpic implements OnInit {
       }
     })
   }
- getname(name?: string) {
+  getname(name?: string) {
     if (!name) return "";
     return name.trim()
       .split(' ')

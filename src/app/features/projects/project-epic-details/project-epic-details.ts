@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   imports: [],
@@ -6,4 +6,7 @@ import { Component } from '@angular/core';
   styleUrl: './project-epic-details.css',
   templateUrl: './project-epic-details.html',
 })
-export class ProjectEpicDetails {}
+export class ProjectEpicDetails {
+  @Input() showPop = false;
+  @Output() closePop = new EventEmitter<void>();
+}

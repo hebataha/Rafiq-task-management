@@ -13,9 +13,7 @@
 
             <!-- Search -->
             <div class="relative">
-                <span class="absolute left-3 top-1/2 -translate-y-1/2 text-[12px] text-[#98a4b6]">
-                    🔍
-                </span>
+
 
                 <input type="text" placeholder="Search epics..." class="h-10 w-[300px] rounded-[2px] border border-[#e1e8f2] bg-[#eaf1ff]
                  pl-9 pr-3 text-[12px] text-[#26344c]
@@ -24,9 +22,9 @@
             </div>
 
             <!-- New Epic Button -->
-            <button class="h-10 rounded-[3px] bg-[#0866c6] px-5 text-[12px] font-medium text-white
+            <button [routerLink]="['/project', _ProjectId.id(), 'epics', 'new']" class="cursor-pointer h-10 rounded-[3px] bg-[#0866c6] px-5 text-[12px] font-medium text-white
                shadow-sm transition hover:bg-[#075caf]">
-                + New Epic
+                New Epic
             </button>
         </div>
     </div>

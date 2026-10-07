@@ -24,17 +24,20 @@ export class ProjectEpic implements OnInit {
   loading = signal(false)
   error = signal(false)
   projectId = this._ActivatedRoute.snapshot.paramMap.get('id');
+  selectedEpicId = null;
+
 
   ngOnInit(): void {
     this.getEpics()
   }
 
 
-  showFun() {
+  showFun(id: any) {
     this.showPop = true;
-    console.log("cllllllllllllllllllllllll" ,this.showPop);
-  
-    
+    this.selectedEpicId = id;
+    console.log("cllllllllllllllllllllllll", this.showPop);
+
+
   }
 
   getEpics() {

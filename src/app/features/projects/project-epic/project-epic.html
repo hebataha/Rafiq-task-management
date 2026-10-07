@@ -47,7 +47,7 @@
     <div class="grid grid-cols-1 gap-4 md:grid-cols-2 xl:gap-5">
         @for (epic of epicsData; track $index) {
         <div class="relative rounded-[4px] border border-[#edf0f5] bg-white
-               px-5 py-5 shadow-[0_1px_4px_rgba(15,23,42,0.04)] sm:px-6" (click)=" showFun() ">
+               px-5 py-5 shadow-[0_1px_4px_rgba(15,23,42,0.04)] sm:px-6" (click)=" showFun(epic.id) ">
             <!-- Left Blue Border -->
             <div class="absolute left-0 top-0 h-full w-[4px] rounded-l-[4px] bg-[#0866c6]">
             </div>
@@ -123,5 +123,9 @@
 
 }
 
-<app-project-epic-details [showPop]="showPop"[showPop]="showPop"
-  (closePop)="showPop = false"></app-project-epic-details>
+@if (showPop && selectedEpicId) {
+
+
+<app-project-epic-details [showPop]="showPop" [showPop]="showPop" (closePop)="showPop = false"
+    [id]="selectedEpicId"></app-project-epic-details>
+}

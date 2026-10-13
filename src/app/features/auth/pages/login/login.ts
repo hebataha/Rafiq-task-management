@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { signal } from '@angular/core';
 import { email, form, FormField, required } from '@angular/forms/signals';
 import { Router, RouterLink } from '@angular/router';
@@ -14,9 +14,25 @@ import { ToastService } from '../../../../shared/services/toast';
   templateUrl: './login.html',
 })
 
-export class Login {
+export class Login implements OnInit {
   constructor(private _LoginApi: LoginApi, private _Router: Router, private _AuthState: AuthState, private _ToastService: ToastService) {
 
+  }
+
+  ngOnInit() {
+    const params = new URLSearchParams(
+      window.location.hash.substring(1)
+    );
+
+    const type = params.get('type');
+    const accessToken = params.get('access_token');
+
+    if (type === 'recovery' && accessToken) {
+      this._Router.navigate(['/reset-password'], {
+        state: { accessToken },
+        replaceUrl: true
+      });
+    }
   }
   apiError: string = "";
   showpass: boolean = false;
@@ -26,8 +42,8 @@ export class Login {
     rememberMe: false,
   })
   togglePass() {
-  return this.showpass = !this.showpass
-}
+    return this.showpass = !this.showpass
+  }
   loginForm = form(this.loginModel, (fields) => {
     required(fields.email, { message: "email is required" });
     email(fields.email, { message: "please enter a vaild email" });
@@ -47,7 +63,7 @@ export class Login {
           this._Router.navigate(['/projects'])
         }
         localStorage.setItem("refresh_token", res.refresh_token);
-      
+
 
 
 

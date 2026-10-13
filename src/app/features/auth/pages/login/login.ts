@@ -26,7 +26,15 @@ export class Login implements OnInit {
 
     const type = params.get('type');
     const accessToken = params.get('access_token');
+    const errorCode = params.get('error_code');
 
+    if (errorCode === 'otp_expired') {
+      this._Router.navigate(['/reset-password'], {
+        state: { recoveryError: true },
+        replaceUrl: true
+      });
+      return;
+    }
     if (type === 'recovery' && accessToken) {
       this._Router.navigate(['/reset-password'], {
         state: { accessToken },

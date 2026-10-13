@@ -15,6 +15,7 @@ import { ForgotPassword } from './features/auth/pages/forgot-password/forgot-pas
 import { ProjectMembers } from './features/projects/project-members/project-members';
 import { ProjectCreateEpic } from './features/projects/project-create-epic/project-create-epic';
 import { ProjectEpic } from './features/projects/project-epic/project-epic';
+import { ResetPassword } from './features/auth/pages/reset-password/reset-password';
 
 export const routes: Routes = [
   {
@@ -30,7 +31,9 @@ export const routes: Routes = [
         path: 'login', component: Login, canActivate: [guestGuard]
       },
       { path: 'sign-up', component: SignUp, canActivate: [guestGuard] },
-      { path: 'forget-password', component: ForgotPassword, canActivate: [guestGuard] }
+      { path: 'forget-password', component: ForgotPassword, canActivate: [guestGuard] },
+      { path: 'reset-password', component: ResetPassword, canActivate: [guestGuard] }
+
 
     ]
   },

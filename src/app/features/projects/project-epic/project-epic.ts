@@ -8,6 +8,7 @@ import { ProjectEpicError } from './project-epic-error/project-epic-error';
 import { ProjectEpicEmpty } from './project-epic-empty/project-epic-empty';
 import { DatePipe } from '@angular/common';
 import { ProjectEpicDetails } from '../project-epic-details/project-epic-details';
+import { SearchEpics } from '../services/search-epics';
 
 @Component({
   imports: [Breadcrumb, RouterLink, ProjectEpicLoader, ProjectEpicError, ProjectEpicEmpty, DatePipe, ProjectEpicDetails],
@@ -19,12 +20,14 @@ export class ProjectEpic implements OnInit {
   public _ProjectId = inject(ProjectId);
   _ProjectEpicList = inject(ProjectEpicList);
   private _ActivatedRoute = inject(ActivatedRoute);
+  _SearchEpic = inject(SearchEpics);
   showPop = false;
   epicsData: any[] = [];
   loading = signal(false)
   error = signal(false)
   projectId = this._ActivatedRoute.snapshot.paramMap.get('id');
   selectedEpicId = null;
+  searchTerm = '';
 
 
   ngOnInit(): void {
@@ -36,8 +39,6 @@ export class ProjectEpic implements OnInit {
     this.showPop = true;
     this.selectedEpicId = id;
     console.log("cllllllllllllllllllllllll", this.showPop);
-
-
   }
 
   getEpics() {
@@ -69,5 +70,28 @@ export class ProjectEpic implements OnInit {
       .toUpperCase();
 
 
+  }
+
+  onSearch(event: Event) {
+    const input = event.target as HTMLInputElement;
+
+    this.searchTerm = input.value;
+    if (this.searchTerm.trim() === '') {
+      this.getEpics();
+      return;
+    }
+    if (this.projectId === null) {
+      return;
+    }
+    console.log("this.searchTerm", this.searchTerm);
+    this._SearchEpic.searchEpics(this.projectId, this.searchTerm)
+      .subscribe({
+        next: (res: any) => {
+          this.epicsData = res;
+        },
+        error: (err) => {
+          console.log(err);
+        }
+      });
   }
 }

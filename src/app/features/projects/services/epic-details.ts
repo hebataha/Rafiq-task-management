@@ -9,7 +9,7 @@ export class EpicDetails {
     token = localStorage.getItem("access_token");
 
   epicDeatils(projectId: string, epicId: string) {
-  return this.http.get(
+  return this.http.get<any[]>(
     this.apiUrl +
     `/rest/v1/project_epics?project_id=eq.${projectId}&id=eq.${epicId}`
   );

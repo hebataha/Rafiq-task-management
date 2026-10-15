@@ -3,6 +3,12 @@
 @if(showPop){
 <div class="fixed inset-0 z-50 flex items-center justify-center
          bg-[#344054]/35 backdrop-blur-[1.5px] px-4 py-6">
+    @if(loading()){
+
+    <p>
+        loadding ....
+    </p>
+    }@else {
     <!-- Modal -->
     <div class="w-full max-w-[672px]
            max-h-[calc(100vh-48px)]
@@ -15,7 +21,6 @@
 
             <!-- ================= HEADER ================= -->
             <div class="mb-[22px] flex items-center justify-between">
-
                 <!-- Epic number -->
                 <div class="flex items-center gap-[7px]">
 
@@ -66,7 +71,7 @@
                border border-[#DDE1E7]
                px-[14px]">
                 <h2 class="text-[17px] font-semibold leading-[22px] text-[#172033]">
-                    Modern Architecture Overhaul
+                    {{detailsList()?.title}}
                 </h2>
             </div>
 
@@ -78,7 +83,7 @@
                border border-[#DDE1E7]
                px-[14px] py-[13px]">
                 <p class="text-[12px] font-normal leading-[20px] text-[#475467]">
-                    A comprehensive review and upgrade of the core architectural frameworks.
+                    {{detailsList()?.description}}
                 </p>
             </div>
 
@@ -107,7 +112,11 @@
                         </div>
 
                         <span class="text-[11px] font-normal text-[#344054]">
-                            John Doe
+                            @if(detailsList()?.assignee?.name){
+                            {{detailsList()?.assignee.name}}
+                            }@else {
+                            Unassigned
+                            }
                         </span>
 
                     </div>
@@ -144,7 +153,7 @@
                             </div>
 
                             <span class="text-[11px] text-[#344054]">
-                                John Doe
+                                {{detailsList()?.created_by?.name}}
                             </span>
 
                         </div>
@@ -174,7 +183,8 @@
                         </svg>
 
                         <span class="text-[11px] text-[#344054]">
-                            Oct 10, 2025
+                            {{ detailsList()?.created_at | date:'dd MMM yyyy' }}
+
                         </span>
 
                     </div>
@@ -247,5 +257,7 @@
 
         </div>
     </div>
+    }
+
 </div>
 }

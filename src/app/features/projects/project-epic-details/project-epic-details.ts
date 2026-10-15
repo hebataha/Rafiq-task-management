@@ -24,7 +24,20 @@ export class ProjectEpicDetails implements OnInit {
   ngOnInit(): void {
     this.getDetails(this.projectId, this.id)
   }
+  getname(name?: string) {
+    if (!name) return "";
+    return name.trim()
+      .split(' ')
+      .filter(Boolean)
+      .map(word => word[0])
+      .join('')
+      .toUpperCase();
+  }
+  copyLink() {
+    const link = window.location.href;
 
+    navigator.clipboard.writeText(link);
+  }
   getDetails(projectId: string, epicId: string) {
     this.loading.set(true)
     this._EpicDetails.epicDeatils(projectId, epicId).subscribe({

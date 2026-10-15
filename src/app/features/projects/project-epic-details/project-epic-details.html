@@ -30,7 +30,7 @@
                     </svg>
 
                     <span class="text-[11px] font-medium text-[#475467]">
-                        EPIC-101
+                        {{detailsList().epic_id}}
                     </span>
                 </div>
 
@@ -38,9 +38,9 @@
                 <!-- Header actions -->
                 <div class="flex items-center gap-[18px]">
 
-                    <button type="button" class="flex items-center gap-[6px]
+                    <button type="button" class="flex items-center gap-[6px] cursor-pointer
                    text-[11px] font-normal text-[#475467]
-                   transition hover:text-[#0866C6]">
+                   transition hover:text-[#0866C6]" (click)="copyLink()" >
                         <svg class="h-[14px] w-[14px]" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="1.5">
                             <rect x="8" y="8" width="11" height="11" rx="2"></rect>
@@ -108,7 +108,7 @@
                      rounded-full
                      bg-[#EEF4FF]
                      text-[8px] font-medium text-[#4878C9]">
-                            JD
+                            {{getname(detailsList()?.assignee?.name)}}
                         </div>
 
                         <span class="text-[11px] font-normal text-[#344054]">
@@ -149,7 +149,8 @@
                        rounded-full
                        bg-[#EEF4FF]
                        text-[8px] font-medium text-[#4878C9]">
-                                JD
+                                {{getname(detailsList()?.created_by?.name)}}
+
                             </div>
 
                             <span class="text-[11px] text-[#344054]">

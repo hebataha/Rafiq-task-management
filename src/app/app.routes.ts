@@ -44,9 +44,7 @@ export const routes: Routes = [
     component: AppLayout,
     children: [
       {
-        path: 'projects', component: Projects, canActivate: [authGuard]
-      },
-
+        path: 'projects', component: Projects, canActivate: [authGuard]},
       { path: 'projects/add-project', component: AddProjects, canActivate: [authGuard] },
       { path: 'project/:id/epics', component: ProjectEpic, canActivate: [authGuard] },
       { path: 'project/:id/epics/new', component: ProjectCreateEpic, canActivate: [authGuard] },

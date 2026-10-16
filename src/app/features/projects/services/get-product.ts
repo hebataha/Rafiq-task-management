@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, OnInit } from '@angular/core';
+import { GetProjectTasks } from './get-project-tasks';
 
 @Injectable({
   providedIn: 'root'
@@ -7,12 +8,14 @@ import { inject, Injectable } from '@angular/core';
 export class GetProjectService {
 
   private readonly http = inject(HttpClient);
+  _GetProjectTasks = inject(GetProjectTasks)
 
   private readonly apiUrl =
     'https://ewryvwlqqqvwbgmacgau.supabase.co';
 
   private readonly apiKey =
     'sb_publishable_MUL_oO1sCf-c5NKi1as6Sg_42ECtX8U';
+
 
   getProjectById(id: string) {
     return this.http.get(
@@ -25,4 +28,5 @@ export class GetProjectService {
       }
     );
   }
+
 }

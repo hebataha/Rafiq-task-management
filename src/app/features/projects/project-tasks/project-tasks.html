@@ -2,36 +2,34 @@
 <section class="min-h-screen bg-[#F8F9FD] px-4 py-6 sm:px-6 lg:px-8">
 
   <!-- Breadcrumb -->
-  <div class="mb-5 flex items-center gap-2 text-[10px] font-medium uppercase tracking-[1px] text-[#98A2B3]">
+  <div class="mb-5 flex items-center gap-2 text-[11px] text-[#98A2B3]">
     <span>Projects</span>
-    <span>›</span>
-    <span>Rafiq</span>
-    <span>›</span>
-    <span class="text-[#344054]">Tasks</span>
+    <span>/</span>
+    <span class="font-medium text-[#344054]">Tasks</span>
   </div>
 
-  <!-- Page Header -->
+  <!-- Header -->
   <div class="mb-7 flex flex-wrap items-center justify-between gap-4">
 
     <div>
-      <h1 class="text-[24px] font-semibold tracking-tight text-[#101828]">
+      <h1 class="text-[24px] font-semibold text-[#101828]">
         Active Workboard
       </h1>
 
       <p class="mt-1 text-[12px] text-[#98A2B3]">
-        Curating Project Alpha's production pipeline and milestones.
+        Track tasks across every project status.
       </p>
     </div>
 
-    <!-- Search -->
+    <!-- Search UI Only -->
     <div class="relative w-full sm:w-[260px]">
+
       <svg
         class="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#98A2B3]"
         fill="none"
         stroke="currentColor"
         stroke-width="1.8"
-        viewBox="0 0 24 24"
-      >
+        viewBox="0 0 24 24">
         <circle cx="11" cy="11" r="7"></circle>
         <path d="m20 20-4-4"></path>
       </svg>
@@ -39,91 +37,183 @@
       <input
         type="text"
         placeholder="Search tasks..."
-        class="h-10 w-full rounded-[4px] border border-[#DCE5F5] bg-[#E8EFFF] pl-10 pr-4 text-[12px] text-[#344054] outline-none placeholder:text-[#98A2B3] focus:border-[#84ADFF]"
+        class="h-10 w-full rounded-[4px] border border-[#DCE5F5] bg-[#E8EFFF] pl-10 pr-4 text-[12px] outline-none placeholder:text-[#98A2B3]"
       />
     </div>
+
   </div>
 
-  <!-- Board Horizontal Scroll -->
-  <div class="w-full overflow-x-auto pb-4">
+  @if (!projectId) {
+
+    <p class="text-sm text-red-500">
+      Project ID not found.
+    </p>
+
+  } @else {
+
+  <!-- Board -->
+  <div class="w-full overflow-x-auto pb-5">
 
     <div class="flex min-w-max items-start gap-4">
 
-      @for (column of columns; track column.status) {
+      @for (column of columns; track column.apiStatus) {
 
-      <!-- Status Column -->
+      <!-- Column -->
       <div class="w-[285px] shrink-0">
 
         <!-- Column Header -->
         <div class="mb-4 flex items-center gap-2 px-1">
 
           <span
-            class="h-[7px] w-[7px] rounded-full"
-            [style.backgroundColor]="column.color"
-          ></span>
+            class="h-2 w-2 rounded-full"
+            [style.backgroundColor]="column.color">
+          </span>
 
           <h2 class="text-[11px] font-semibold uppercase tracking-[1px] text-[#475467]">
             {{ column.status }}
           </h2>
 
+          <!-- Tasks Count -->
           <span
-            class="flex h-[18px] min-w-[18px] items-center justify-center rounded-[3px] px-1 text-[10px] font-semibold"
+            class="rounded px-2 py-1 text-[10px] font-semibold"
             [style.backgroundColor]="column.badgeBg"
-            [style.color]="column.color"
-          >
-            0
+            [style.color]="column.color">
+
+            {{ column.tasks.length }}
+
           </span>
+
         </div>
 
-        <!-- Add Task -->
+        <!-- Add Task Button (UI only) -->
         <button
           type="button"
-          class="mb-3 flex h-[48px] w-full items-center justify-center gap-2 rounded-[4px] border border-dashed border-[#DDE3ED] bg-transparent text-[10px] font-medium uppercase tracking-[1px] text-[#667085] transition-colors hover:border-[#98A2B3] hover:bg-white"
-        >
-          <svg
-            class="h-[15px] w-[15px]"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.5"
-            viewBox="0 0 24 24"
-          >
-            <circle cx="12" cy="12" r="9"></circle>
-            <path d="M12 8v8M8 12h8"></path>
-          </svg>
+          class="mb-3 flex h-[48px] w-full items-center justify-center gap-2 rounded-[4px] border border-dashed border-[#DDE3ED] text-[11px] font-medium text-[#667085] transition hover:bg-white">
 
-          Add New Task
+          <span class="text-lg">+</span>
+          ADD NEW TASK
+
         </button>
 
         <!-- Column Body -->
-        <div
-          class="flex min-h-[540px] flex-col rounded-[4px] border border-[#F0F2F7] bg-[#FAFBFE] p-3"
-        >
+        <div class="flex min-h-[500px] flex-col rounded-[4px] border border-[#F0F2F7] bg-[#FAFBFE] p-3">
 
-          <!-- Empty State -->
-          <div class="flex flex-1 flex-col items-center justify-center gap-2">
+          <!-- Loading -->
+          @if (column.loading()) {
 
-            <svg
-              class="h-8 w-8 text-[#94A3B8]"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.5"
-              viewBox="0 0 24 24"
-            >
-              <rect x="4" y="6" width="16" height="15" rx="2"></rect>
-              <path d="M8 3v6M16 3v6M4 11h16"></path>
-              <path d="m10 15 4 4m0-4-4 4"></path>
-            </svg>
+            <div class="space-y-3">
 
-            <p class="text-[10px] font-semibold uppercase tracking-[1.5px] text-[#98A2B3]">
-              No Tasks
-            </p>
-          </div>
+              @for (item of [1, 2, 3]; track item) {
+
+                <div class="animate-pulse rounded-md border border-[#EDF0F5] bg-white p-4">
+
+                  <div class="mb-4 h-3 w-3/4 rounded bg-[#E4E7EC]"></div>
+
+                  <div class="mb-2 h-2 w-full rounded bg-[#F2F4F7]"></div>
+
+                  <div class="mb-4 h-2 w-2/3 rounded bg-[#F2F4F7]"></div>
+
+                  <div class="h-5 w-16 rounded bg-[#E4E7EC]"></div>
+
+                </div>
+
+              }
+
+            </div>
+
+          }
+
+          <!-- Error -->
+          @else if (column.error()) {
+
+            <div class="flex flex-1 flex-col items-center justify-center gap-3 text-center">
+
+              <svg
+                class="h-8 w-8 text-[#F04438]"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                viewBox="0 0 24 24">
+
+                <circle cx="12" cy="12" r="9"></circle>
+                <path d="M12 7v6"></path>
+                <path d="M12 17h.01"></path>
+
+              </svg>
+
+              <p class="text-[12px] font-medium text-[#F04438]">
+                Failed to load tasks
+              </p>
+
+              <button
+                type="button"
+                (click)="loadColumn(column)"
+                class="rounded border border-[#D0D5DD] bg-white px-4 py-2 text-[11px] text-[#344054] transition hover:bg-[#F9FAFB]">
+
+                Retry
+
+              </button>
+
+            </div>
+
+          }
+
+          <!-- Empty -->
+          @else if (column.tasks.length === 0) {
+
+            <div class="flex flex-1 flex-col items-center justify-center gap-3">
+
+              <svg
+                class="h-9 w-9 text-[#98A2B3]"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                viewBox="0 0 24 24">
+
+                <rect x="4" y="6" width="16" height="15" rx="2"></rect>
+                <path d="M8 3v6M16 3v6M4 11h16"></path>
+                <path d="m9 15 6 4m0-4-6 4"></path>
+
+              </svg>
+
+              <p class="text-[11px] font-semibold uppercase tracking-[1.5px] text-[#98A2B3]">
+                No Tasks
+              </p>
+
+            </div>
+
+          }
+
+          <!-- Success -->
+          @else {
+
+            <div class="space-y-3">
+
+              @for (task of column.tasks(); track $index) {
+
+                <!-- Temporary Card Until Response Is Known -->
+                <div class="rounded-md border border-[#EDF0F5] bg-white p-4 shadow-sm">
+
+                  <pre class="whitespace-pre-wrap break-words text-[11px] leading-5 text-[#475467]">{{ task | json }}</pre>
+
+                </div>
+
+              }
+
+            </div>
+
+          }
 
         </div>
+
       </div>
 
       }
+
     </div>
+
   </div>
+
+  }
 
 </section>

@@ -16,6 +16,7 @@ import { ProjectMembers } from './features/projects/project-members/project-memb
 import { ProjectCreateEpic } from './features/projects/project-create-epic/project-create-epic';
 import { ProjectEpic } from './features/projects/project-epic/project-epic';
 import { ResetPassword } from './features/auth/pages/reset-password/reset-password';
+import { ProjectTasks } from './features/projects/project-tasks/project-tasks';
 
 export const routes: Routes = [
   {
@@ -49,12 +50,11 @@ export const routes: Routes = [
       { path: 'projects/add-project', component: AddProjects, canActivate: [authGuard] },
       { path: 'project/:id/epics', component: ProjectEpic, canActivate: [authGuard] },
       { path: 'project/:id/epics/new', component: ProjectCreateEpic, canActivate: [authGuard] },
-      { path: 'project/:id/tasks', component: ProjectDetails, canActivate: [authGuard] },
+      // { path: 'project/:id/tasks', component: ProjectDetails, canActivate: [authGuard] },
       { path: 'project/:id/members', component: ProjectMembers, canActivate: [authGuard] },
       { path: 'project/:id/details', component: ProjectEdit, canActivate: [authGuard] },
       { path: 'project/:id/edit', component: ProjectEdit, canActivate: [authGuard] },
-
-
+      { path: 'project/:id/tasks', component: ProjectTasks, canActivate: [authGuard] },
     ]
   },
 

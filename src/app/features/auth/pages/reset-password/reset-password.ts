@@ -1,5 +1,5 @@
-import { Component, signal, OnInit, computed } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, signal, OnInit, computed, inject } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 import {
   form,
   required,
@@ -9,55 +9,76 @@ import {
   validate,
   FormField
 } from '@angular/forms/signals';
+import { RestPassword } from '../../services/rest-password';
+import { ToastService } from '../../../../shared/services/toast';
 
 @Component({
   selector: 'app-reset-password',
-  imports: [RouterLink,FormField],
+  imports: [RouterLink, FormField],
   templateUrl: './reset-password.html',
   styleUrl: './reset-password.css',
 })
 export class ResetPassword implements OnInit {
   tokenStatus = signal<'checking' | 'valid' | 'invalid'>('checking');
+  showpass: boolean = false;
+  _RestPassword = inject(RestPassword);
+  _ToastService = inject(ToastService);
+  _Router = inject(Router);
 
+  loading = signal(false);
+  success = signal(false);
+  errorMessage = signal('');
+
+  showFunc() {
+    this.showpass = !this.showpass;
+  }
   passwordModel = signal({
     password: '',
     confirmPassword: ''
   });
+
   passwordForm = form(this.passwordModel, (field) => {
 
     // Required
-    required(field.password ,{message:"requried"});
-    required(field.confirmPassword);
+    required(field.password, {
+      message: 'Password is required'
+    });
+
+    required(field.confirmPassword, {
+      message: 'Please confirm your password'
+    });
 
     // 8 - 64 characters
-    minLength(field.password, 8);
-    maxLength(field.password, 64);
+    minLength(field.password, 8, {
+      message: 'Password must be at least 8 characters'
+    });
+
+    maxLength(field.password, 64, {
+      message: 'Password must not exceed 64 characters'
+    });
 
     // Uppercase letter
-    pattern(field.password, /[A-Z]/);
+    pattern(field.password, /[A-Z]/, {
+      message: 'Password must contain at least one uppercase letter'
+    });
 
     // Lowercase letter
-    pattern(field.password, /[a-z]/);
+    pattern(field.password, /[a-z]/, {
+      message: 'Password must contain at least one lowercase letter'
+    });
 
     // At least one digit
-    pattern(field.password, /[0-9]/);
+    pattern(field.password, /[0-9]/, {
+      message: 'Password must contain at least one number'
+    });
 
     // Special character
-    pattern(field.password, /[^A-Za-z0-9]/);
-
-    // Confirm Password
-    validate(field.confirmPassword, ({ value, valueOf }) => {
-      if (value() !== valueOf(field.password)) {
-        return {
-          kind: 'passwordMismatch',
-          message: 'Passwords do not match'
-        };
-      }
-
-      return null;
+    pattern(field.password, /[^A-Za-z0-9]/, {
+      message: 'Password must contain at least one special character'
     });
 
   });
+
 
   ngOnInit() {
     const accessToken = history.state.accessToken;
@@ -81,4 +102,49 @@ export class ResetPassword implements OnInit {
       special: /[^A-Za-z0-9]/.test(password)
     };
   });
+
+
+  resetPass() {
+
+    // if (this.passwordForm().invalid() || this.loading()) {
+    //   return;
+    // }
+
+    const password = this.passwordModel().password;
+    const confirmPassword = this.passwordModel().confirmPassword;
+
+    const accessToken = history.state.accessToken;
+
+    if (!accessToken) {
+      this.tokenStatus.set('invalid');
+      return;
+    }
+
+    this.loading.set(true);
+    this.errorMessage.set('');
+
+    this._RestPassword.sendResetPass(password, accessToken)
+      .subscribe({
+        next: (res) => {
+          console.log(res);
+          this.success.set(true);
+          this.loading.set(false);
+          this._ToastService.show(
+            'Your password has been updated successfully. You can now log in',
+            "success"
+          );
+          this._Router.navigate(["/login"]);
+        },
+        error: (err) => {
+          console.log(err);
+          this.errorMessage.set('Failed to reset password');
+          this.loading.set(false);
+          this._ToastService.show(
+            'Failed to reset password',
+            "error"
+          );
+        }
+      });
+  }
+
 }
